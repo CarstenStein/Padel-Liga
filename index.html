@@ -7,358 +7,394 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Padel Liga">
 <meta name="theme-color" content="#085041">
-<link rel="manifest" href="./manifest.json">
-<link rel="apple-touch-icon" href="./icon-192.png">
-<title>Padel Liga</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Padel Liga Spieltag</title>
 <style>
-* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:rgba(0,0,0,0.08); }
-html { font-size:16px; -webkit-text-size-adjust:100%; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif; background:#EEECE6; color:#1A1A1A; padding-bottom:88px; min-height:100vh; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0.1);}
+html,body{height:100%;-webkit-text-size-adjust:100%;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:#EDECEA;color:#1A1A1A;font-size:16px;padding-bottom:80px;}
 
 /* HEADER */
-.hdr { background:#085041; padding:env(safe-area-inset-top) 0 0 0; }
-.hdr-inner { padding:14px 16px 12px; }
-.hdr h1 { font-size:21px; font-weight:800; color:#fff; margin-bottom:10px; letter-spacing:-.3px; }
-.hdr-row { display:flex; gap:8px; }
-.hdr input { flex:1; background:rgba(255,255,255,.18); border:1.5px solid rgba(255,255,255,.35); border-radius:10px; color:#fff; font-size:14px; padding:8px 11px; font-family:inherit; -webkit-appearance:none; }
-.hdr input::placeholder { color:rgba(255,255,255,.55); }
+.hdr{background:#085041;padding:12px 16px 10px;}
+.hdr h1{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;}
+.hdr-row{display:flex;gap:8px;}
+.hdr input{flex:1;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;color:#fff;font-size:14px;padding:8px 11px;font-family:inherit;-webkit-appearance:none;}
+.hdr input::placeholder{color:rgba(255,255,255,0.6);}
 
 /* TABS */
-.tabbar { background:#fff; border-bottom:1.5px solid #D8D6CE; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; position:sticky; top:0; z-index:90; }
-.tabbar::-webkit-scrollbar { display:none; }
-.tbtn { flex:0 0 auto; padding:13px 15px 11px; font-size:12px; font-weight:700; color:#999; background:none; border:none; border-bottom:3px solid transparent; cursor:pointer; text-transform:uppercase; letter-spacing:.05em; white-space:nowrap; -webkit-appearance:none; font-family:inherit; }
-.tbtn.act { color:#085041; border-bottom-color:#1D9E75; }
+.tabs{background:#fff;border-bottom:2px solid #D5D3CB;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:99;}
+.tabs::-webkit-scrollbar{display:none;}
+.tb{flex:0 0 auto;padding:13px 16px 10px;font-size:12px;font-weight:700;color:#999;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;font-family:inherit;-webkit-appearance:none;display:block;}
+.tb.on{color:#085041;border-bottom-color:#1D9E75;}
 
 /* PANELS */
-.pnl { display:none; padding:14px 14px 0; }
-.pnl.act { display:block; }
+.pnl{padding:14px;display:none;}
+.pnl.on{display:block;}
 
 /* CARD */
-.card { background:#fff; border-radius:14px; padding:16px; margin-bottom:12px; box-shadow:0 1px 4px rgba(0,0,0,.07); }
-.cttl { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#999; margin-bottom:13px; }
+.card{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+.ctitle{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;margin-bottom:12px;}
 
-/* SPIELER */
-.srow { display:flex; align-items:center; gap:10px; margin-bottom:11px; }
-.srow:last-child { margin-bottom:0; }
-.snum { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; color:#fff; flex-shrink:0; }
-.srow input { flex:1; border:1.5px solid #D8D6CE; border-radius:10px; padding:11px 13px; font-size:17px; font-family:inherit; color:#1A1A1A; background:#fff; -webkit-appearance:none; }
-.srow input:focus { outline:none; border-color:#1D9E75; background:#F4FBF8; }
+/* SPIELER INPUTS */
+.prow{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prow:last-child{margin-bottom:0;}
+.pnum{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;}
+.prow input{flex:1;border:1.5px solid #D5D3CB;border-radius:10px;padding:11px 13px;font-size:17px;font-family:inherit;color:#1A1A1A;background:#fff;-webkit-appearance:none;}
+.prow input:focus{outline:none;border-color:#1D9E75;background:#F5FBF8;}
 
-/* PAARINFO */
-.pinfo { font-size:14px; color:#555; line-height:2.1; }
-.pinfo b { color:#085041; }
+/* MATCH KARTE */
+.mhdr{background:#085041;color:#fff;margin:-16px -16px 0 -16px;border-radius:14px 14px 0 0;padding:11px 16px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;}
+.mteam{background:#E0F5EE;margin:0 -16px 16px -16px;padding:10px 16px;font-size:15px;font-weight:700;color:#085041;line-height:1.75;}
+.mvs{font-size:11px;color:#888;font-weight:400;}
 
-/* MATCH */
-.mhdr { background:#085041; color:#fff; margin:-16px -16px 0; border-radius:14px 14px 0 0; padding:11px 16px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
-.mteams { background:#E1F5EE; margin:0 -16px 16px; padding:11px 16px; font-size:15px; font-weight:700; color:#085041; line-height:1.7; }
-.mvs { font-size:11px; color:#888; font-weight:400; }
+/* SATZ */
+.satz{margin-bottom:18px;}
+.satz:last-child{margin-bottom:0;}
+.stitle{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#aaa;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.tbpill{font-size:10px;background:#FAEEDA;color:#BA7517;padding:2px 8px;border-radius:10px;font-weight:700;text-transform:none;letter-spacing:0;}
 
-.sblk { margin-bottom:18px; }
-.sblk:last-child { margin-bottom:0; }
-.sttl { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#999; margin-bottom:9px; display:flex; align-items:center; gap:7px; }
-.tbpill { font-size:10px; background:#FAEEDA; color:#BA7517; padding:2px 8px; border-radius:10px; font-weight:700; text-transform:none; letter-spacing:0; }
-
-.sgrid { display:grid; grid-template-columns:1fr 26px 1fr; align-items:end; gap:6px; }
-.scol { display:flex; flex-direction:column; gap:4px; }
-.slbl { font-size:11px; color:#999; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-height:16px; }
-.sinp { width:100%; border:1.5px solid #D8D6CE; border-radius:12px; padding:11px 4px; text-align:center; font-size:26px; font-weight:800; font-family:inherit; color:#1A1A1A; background:#fff; -webkit-appearance:none; appearance:none; }
-.sinp:focus { outline:none; border-color:#1D9E75; box-shadow:0 0 0 3px rgba(29,158,117,.14); background:#F4FBF8; }
-.sinp.win { border-color:#1D9E75 !important; background:#E1F5EE !important; color:#085041 !important; }
-.scolon { text-align:center; font-size:24px; font-weight:800; color:#CCC; padding-bottom:10px; }
+.sgrid{display:grid;grid-template-columns:1fr 24px 1fr;align-items:flex-end;gap:6px;}
+.scol{display:flex;flex-direction:column;gap:3px;}
+.slbl{font-size:11px;color:#aaa;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sinp{width:100%;border:1.5px solid #D5D3CB;border-radius:12px;padding:10px 4px;text-align:center;font-size:28px;font-weight:800;font-family:inherit;color:#1A1A1A;background:#fff;-webkit-appearance:none;appearance:none;}
+.sinp:focus{outline:none;border-color:#1D9E75;box-shadow:0 0 0 3px rgba(29,158,117,0.12);background:#F5FBF8;}
+.sinp.win{border-color:#1D9E75 !important;background:#E0F5EE !important;color:#085041 !important;}
+.sep{text-align:center;font-size:24px;font-weight:800;color:#ccc;padding-bottom:8px;}
 
 /* ERGEBNIS */
-.ewhint { text-align:center; color:#999; padding:28px 16px; font-size:15px; line-height:1.7; }
+.ehint{text-align:center;color:#aaa;padding:28px 12px;font-size:15px;line-height:1.7;}
 
-.pkard { background:#fff; border-radius:14px; margin-bottom:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.07); }
-.ktop { display:flex; align-items:center; gap:11px; padding:13px 16px; border-bottom:1px solid #F0EEE8; }
-.kname { font-size:17px; font-weight:800; flex:1; }
-.kstats { display:grid; grid-template-columns:1fr 1fr 1fr; }
-.kstat { text-align:center; padding:11px 6px; border-right:1px solid #F0EEE8; }
-.kstat:last-child { border-right:none; }
-.kslbl { font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:#999; margin-bottom:4px; }
-.ksval { font-size:19px; font-weight:800; }
-.ksval.g { color:#085041; }
-.ksval.n { color:#999; font-weight:500; }
-.kdets { padding:8px 16px 10px; }
-.kdet { display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid #F0EEE8; font-size:13px; color:#999; }
-.kdet:last-child { border-bottom:none; }
-.kdnr { font-size:12px; font-weight:800; color:#085041; min-width:32px; }
-.kdres { margin-left:auto; font-weight:800; font-size:13px; }
-.wc { color:#085041; }
-.lc { color:#bbb; }
+.pkarte{background:#fff;border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+.ktop{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid #EDECEA;}
+.kname{font-size:17px;font-weight:800;flex:1;}
+.kstats{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.kstat{text-align:center;padding:10px 6px;border-right:1px solid #EDECEA;}
+.kstat:last-child{border-right:none;}
+.kstlbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#aaa;margin-bottom:3px;}
+.kstval{font-size:20px;font-weight:800;}
+.kstval.g{color:#085041;}
+.kstval.gr{color:#aaa;font-weight:500;}
+.kdets{padding:8px 16px 10px;}
+.kdet{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #EDECEA;font-size:13px;color:#aaa;}
+.kdet:last-child{border-bottom:none;}
+.kdnr{font-size:12px;font-weight:800;color:#085041;min-width:34px;}
+.kdres{margin-left:auto;font-weight:800;font-size:13px;}
+.gc{color:#085041;}.lc{color:#ccc;}
 
 /* RANGLISTE */
-.rki { display:flex; align-items:center; gap:12px; background:#fff; border-radius:14px; padding:14px 16px; margin-bottom:10px; box-shadow:0 1px 4px rgba(0,0,0,.07); font-size:17px; font-weight:700; border:1.5px solid transparent; }
-.rki.r1 { background:#FFFBF0; border-color:#FAC775; }
-.rki.r4 { background:#FFF8F8; border-color:#F7C1C1; }
-.rkb { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; flex-shrink:0; }
+.rki{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-size:17px;font-weight:700;border:1.5px solid transparent;}
+.rki.r1{background:#FFFBF0;border-color:#FAC775;}
+.rki.r4{background:#FFF8F8;border-color:#F7C1C1;}
+.rkb{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;}
 .b1{background:#FAC775;color:#412402;}
 .b2{background:#D3D1C7;color:#2C2C2A;}
 .b3{background:#F5C4B3;color:#4A1B0C;}
-.b4{background:#EEECE6;color:#999;border:1px solid #D8D6CE;}
-.rktag { margin-left:auto; font-size:12px; font-weight:700; padding:3px 11px; border-radius:20px; }
-.tu { background:#E1F5EE; color:#085041; }
-.td { background:#FCEBEB; color:#A32D2D; }
+.b4{background:#EDECEA;color:#aaa;border:1px solid #D5D3CB;}
+.rktag{margin-left:auto;font-size:12px;font-weight:700;padding:3px 11px;border-radius:20px;}
+.tgu{background:#E0F5EE;color:#085041;}
+.tgd{background:#FCEBEB;color:#A32D2D;}
 
-/* INFO BOX */
-.ibox { background:#FAEEDA; border-left:3px solid #BA7517; border-radius:0 10px 10px 0; padding:12px 14px; font-size:13px; color:#412402; line-height:1.75; margin-bottom:12px; }
-.ibox b { color:#BA7517; }
+/* INFO */
+.ibox{background:#FAEEDA;border-left:3px solid #BA7517;border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#412402;line-height:1.75;margin-bottom:12px;}
+.ibox b{color:#BA7517;}
 
-/* SECTION LABEL */
-.slabel { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#999; padding:4px 2px 7px; }
+.sec{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:2px 2px 7px;}
 
-/* BOTTOM BAR */
-.bot { position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1.5px solid #D8D6CE; padding:10px 16px; padding-bottom:max(12px,env(safe-area-inset-bottom)); display:flex; gap:10px; z-index:100; }
-.bbot { flex:1; padding:14px 10px; border-radius:12px; font-size:15px; font-weight:700; font-family:inherit; border:none; cursor:pointer; -webkit-appearance:none; }
-.bdel { background:#FCEBEB; color:#A32D2D; }
-.bprt { background:#1D9E75; color:#fff; }
+/* BOTTOM */
+.bot{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1.5px solid #D5D3CB;padding:10px 16px;padding-bottom:max(10px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:100;}
+.bbt{flex:1;padding:14px;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;border:none;cursor:pointer;-webkit-appearance:none;}
+.bdel{background:#FCEBEB;color:#A32D2D;}
+.bprt{background:#1D9E75;color:#fff;}
 
-/* INSTALL BANNER */
-.ibanner { background:#085041; color:#fff; padding:12px 16px; display:flex; align-items:center; gap:10px; font-size:13px; }
-.ibanner b { display:block; font-size:14px; margin-bottom:2px; }
-.ibanner-close { margin-left:auto; background:rgba(255,255,255,.2); border:none; color:#fff; border-radius:50%; width:28px; height:28px; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:inherit; }
+/* PAARINFO */
+.pinfo{font-size:14px;color:#555;line-height:2.2;}
+.pinfo b{color:#085041;}
 
-@media print {
-  .tabbar,.bot,.hdr,.ibanner{display:none!important;}
-  .pnl{display:block!important;padding:8px;}
+@media print{
+  .tabs,.bot,.hdr{display:none!important;}
+  .pnl{display:block!important;padding:6px;}
   body{background:#fff;padding:0;}
-  .card,.pkard,.rki{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid;}
-  .mhdr,.mteams,.b1,.b2,.b3,.tu,.td,.rki.r1,.rki.r4,.sinp.win
-  {-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .card,.pkarte,.rki{box-shadow:none!important;border:1px solid #ddd!important;page-break-inside:avoid;}
+  .mhdr,.mteam,.b1,.b2,.b3,.tgu,.tgd,.rki.r1,.rki.r4,.sinp.win
+  {-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
 }
 </style>
 </head>
 <body>
 
-<!-- INSTALL HINT (iOS) -->
-<div class="ibanner" id="ibanner">
-  <div>
-    <b>&#127955; Als App speichern</b>
-    Teilen &#8594; &bdquo;Zum Home-Bildschirm&ldquo; tippen
+<div class="hdr">
+  <h1>&#127955; Padel Liga &ndash; Spieltag</h1>
+  <div class="hdr-row">
+    <input type="text" id="liga" placeholder="Liga / Gruppe">
+    <input type="date" id="datum">
   </div>
-  <button class="ibanner-close" onclick="document.getElementById('ibanner').style.display='none'">&#10005;</button>
 </div>
 
-<div class="hdr">
-  <div class="hdr-inner">
-    <h1>&#127955; Padel Liga &ndash; Spieltag</h1>
-    <div class="hdr-row">
-      <input type="text" id="liga" placeholder="Liga / Gruppe">
-      <input type="date" id="datum">
+<div class="tabs" id="tabbar">
+  <button class="tb on" id="t0" onclick="go(0)">Spieler</button>
+  <button class="tb" id="t1" onclick="go(1)">Spiel&nbsp;1</button>
+  <button class="tb" id="t2" onclick="go(2)">Spiel&nbsp;2</button>
+  <button class="tb" id="t3" onclick="go(3)">Spiel&nbsp;3</button>
+  <button class="tb" id="t4" onclick="go(4)">Ergebnis</button>
+</div>
+
+<!-- PANEL 0: SPIELER -->
+<div class="pnl on" id="p0">
+  <div class="card">
+    <div class="ctitle">Namen eintragen</div>
+    <div class="prow">
+      <div class="pnum" style="background:#1D9E75;">1</div>
+      <input type="text" id="p1" placeholder="Spieler 1" autocomplete="off" oninput="upd()">
+    </div>
+    <div class="prow">
+      <div class="pnum" style="background:#BA7517;">2</div>
+      <input type="text" id="p2" placeholder="Spieler 2" autocomplete="off" oninput="upd()">
+    </div>
+    <div class="prow">
+      <div class="pnum" style="background:#5F5E5A;">3</div>
+      <input type="text" id="p3" placeholder="Spieler 3" autocomplete="off" oninput="upd()">
+    </div>
+    <div class="prow">
+      <div class="pnum" style="background:#A32D2D;">4</div>
+      <input type="text" id="p4" placeholder="Spieler 4" autocomplete="off" oninput="upd()">
     </div>
   </div>
-</div>
-
-<div class="tabbar">
-  <button class="tbtn act" id="t0" onclick="go(0)">Spieler</button>
-  <button class="tbtn" id="t1" onclick="go(1)">Spiel 1</button>
-  <button class="tbtn" id="t2" onclick="go(2)">Spiel 2</button>
-  <button class="tbtn" id="t3" onclick="go(3)">Spiel 3</button>
-  <button class="tbtn" id="t4" onclick="go(4)">Ergebnis</button>
-</div>
-
-<!-- TAB 0: SPIELER -->
-<div class="pnl act" id="p0">
   <div class="card">
-    <div class="cttl">Namen eintragen</div>
-    <div class="srow"><div class="snum" style="background:#1D9E75">1</div><input type="text" id="p1" placeholder="Spieler 1" oninput="upd()"></div>
-    <div class="srow"><div class="snum" style="background:#BA7517">2</div><input type="text" id="p2" placeholder="Spieler 2" oninput="upd()"></div>
-    <div class="srow"><div class="snum" style="background:#5F5E5A">3</div><input type="text" id="p3" placeholder="Spieler 3" oninput="upd()"></div>
-    <div class="srow"><div class="snum" style="background:#A32D2D">4</div><input type="text" id="p4" placeholder="Spieler 4" oninput="upd()"></div>
-  </div>
-  <div class="card">
-    <div class="cttl">Paarungen</div>
+    <div class="ctitle">Paarungen</div>
     <div class="pinfo" id="pinfo">
       <div><b>Spiel 1:</b> Sp.1 / Sp.2 &nbsp;vs&nbsp; Sp.3 / Sp.4</div>
       <div><b>Spiel 2:</b> Sp.1 / Sp.3 &nbsp;vs&nbsp; Sp.2 / Sp.4</div>
       <div><b>Spiel 3:</b> Sp.1 / Sp.4 &nbsp;vs&nbsp; Sp.2 / Sp.3</div>
     </div>
   </div>
-  <div class="ibox"><b>Regeln:</b> Sieg (1:0) &middot; Satz (2:0 oder 2:1) &middot; Spiele gesamt.<br>3. Satz = Tiebreak bis 10 &rarr; z&auml;hlt als Satz, nur als <em>1 Spiel</em>.<br>Gleichstand &rarr; M&uuml;nzwurf.</div>
+  <div class="ibox">
+    <b>Regeln:</b> Sieg (1:0) &middot; Satz (2:0 oder 2:1) &middot; Spiele gesamt.<br>
+    3. Satz = Tiebreak bis 10 &rarr; z&auml;hlt als Satz, aber nur als <em>1&nbsp;Spiel</em>.<br>
+    Gleichstand &rarr; M&uuml;nzwurf.
+  </div>
 </div>
 
-<!-- TAB 1: SPIEL 1 (P1+P2 vs P3+P4) -->
+<!-- PANEL 1: SPIEL 1 -->
 <div class="pnl" id="p1">
   <div class="card">
     <div class="mhdr">Spiel 1</div>
-    <div class="mteams"><span id="m1ta">Sp.1 / Sp.2</span><br><span class="mvs">&#8212; vs &#8212;</span><br><span id="m1tb">Sp.3 / Sp.4</span></div>
-    <div class="sblk">
-      <div class="sttl">1. Satz</div>
+    <div class="mteam">
+      <span id="m1a">Sp.1 / Sp.2</span><br>
+      <span class="mvs">&#8212;&nbsp;vs&nbsp;&#8212;</span><br>
+      <span id="m1b">Sp.3 / Sp.4</span>
+    </div>
+    <div class="satz">
+      <div class="stitle">1. Satz</div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l1-1a">Sp.1/2</div><input class="sinp" id="m1s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l1-1b">Sp.3/4</div><input class="sinp" id="m1s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l1s1a">Sp.1/2</div><input class="sinp" id="m1s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l1s1b">Sp.3/4</div><input class="sinp" id="m1s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
-    <div class="sblk">
-      <div class="sttl">2. Satz</div>
+    <div class="satz">
+      <div class="stitle">2. Satz</div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l1-2a">Sp.1/2</div><input class="sinp" id="m1s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l1-2b">Sp.3/4</div><input class="sinp" id="m1s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l1s2a">Sp.1/2</div><input class="sinp" id="m1s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l1s2b">Sp.3/4</div><input class="sinp" id="m1s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
-    <div class="sblk">
-      <div class="sttl">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
+    <div class="satz">
+      <div class="stitle">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l1-3a">Sp.1/2</div><input class="sinp" id="m1s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l1-3b">Sp.3/4</div><input class="sinp" id="m1s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l1s3a">Sp.1/2</div><input class="sinp" id="m1s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l1s3b">Sp.3/4</div><input class="sinp" id="m1s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TAB 2: SPIEL 2 (P1+P3 vs P2+P4) -->
+<!-- PANEL 2: SPIEL 2 -->
 <div class="pnl" id="p2">
   <div class="card">
     <div class="mhdr">Spiel 2</div>
-    <div class="mteams"><span id="m2ta">Sp.1 / Sp.3</span><br><span class="mvs">&#8212; vs &#8212;</span><br><span id="m2tb">Sp.2 / Sp.4</span></div>
-    <div class="sblk">
-      <div class="sttl">1. Satz</div>
+    <div class="mteam">
+      <span id="m2a">Sp.1 / Sp.3</span><br>
+      <span class="mvs">&#8212;&nbsp;vs&nbsp;&#8212;</span><br>
+      <span id="m2b">Sp.2 / Sp.4</span>
+    </div>
+    <div class="satz">
+      <div class="stitle">1. Satz</div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l2-1a">Sp.1/3</div><input class="sinp" id="m2s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l2-1b">Sp.2/4</div><input class="sinp" id="m2s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l2s1a">Sp.1/3</div><input class="sinp" id="m2s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l2s1b">Sp.2/4</div><input class="sinp" id="m2s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
-    <div class="sblk">
-      <div class="sttl">2. Satz</div>
+    <div class="satz">
+      <div class="stitle">2. Satz</div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l2-2a">Sp.1/3</div><input class="sinp" id="m2s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l2-2b">Sp.2/4</div><input class="sinp" id="m2s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l2s2a">Sp.1/3</div><input class="sinp" id="m2s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l2s2b">Sp.2/4</div><input class="sinp" id="m2s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
-    <div class="sblk">
-      <div class="sttl">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
+    <div class="satz">
+      <div class="stitle">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l2-3a">Sp.1/3</div><input class="sinp" id="m2s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l2-3b">Sp.2/4</div><input class="sinp" id="m2s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l2s3a">Sp.1/3</div><input class="sinp" id="m2s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l2s3b">Sp.2/4</div><input class="sinp" id="m2s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TAB 3: SPIEL 3 (P1+P4 vs P2+P3) -->
+<!-- PANEL 3: SPIEL 3 -->
 <div class="pnl" id="p3">
   <div class="card">
     <div class="mhdr">Spiel 3</div>
-    <div class="mteams"><span id="m3ta">Sp.1 / Sp.4</span><br><span class="mvs">&#8212; vs &#8212;</span><br><span id="m3tb">Sp.2 / Sp.3</span></div>
-    <div class="sblk">
-      <div class="sttl">1. Satz</div>
+    <div class="mteam">
+      <span id="m3a">Sp.1 / Sp.4</span><br>
+      <span class="mvs">&#8212;&nbsp;vs&nbsp;&#8212;</span><br>
+      <span id="m3b">Sp.2 / Sp.3</span>
+    </div>
+    <div class="satz">
+      <div class="stitle">1. Satz</div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l3-1a">Sp.1/4</div><input class="sinp" id="m3s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l3-1b">Sp.2/3</div><input class="sinp" id="m3s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l3s1a">Sp.1/4</div><input class="sinp" id="m3s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l3s1b">Sp.2/3</div><input class="sinp" id="m3s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
-    <div class="sblk">
-      <div class="sttl">2. Satz</div>
+    <div class="satz">
+      <div class="stitle">2. Satz</div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l3-2a">Sp.1/4</div><input class="sinp" id="m3s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l3-2b">Sp.2/3</div><input class="sinp" id="m3s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l3s2a">Sp.1/4</div><input class="sinp" id="m3s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l3s2b">Sp.2/3</div><input class="sinp" id="m3s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
-    <div class="sblk">
-      <div class="sttl">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
+    <div class="satz">
+      <div class="stitle">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
       <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l3-3a">Sp.1/4</div><input class="sinp" id="m3s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="scolon">:</div>
-        <div class="scol"><div class="slbl" id="l3-3b">Sp.2/3</div><input class="sinp" id="m3s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="scol"><div class="slbl" id="l3s3a">Sp.1/4</div><input class="sinp" id="m3s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+        <div class="sep">:</div>
+        <div class="scol"><div class="slbl" id="l3s3b">Sp.2/3</div><input class="sinp" id="m3s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TAB 4: ERGEBNIS -->
+<!-- PANEL 4: ERGEBNIS -->
 <div class="pnl" id="p4">
-  <div id="ewhint" class="card"><div class="ewhint">&#9203; Spielergebnisse in Spiel 1&#8211;3 eingeben.<br>Auswertung erscheint hier automatisch.</div></div>
-  <div id="ewbody" style="display:none">
-    <div class="slabel">Auswertung</div>
+  <div id="ehint" class="card">
+    <div class="ehint">&#9203; Ergebnisse in Spiel&nbsp;1&#8211;3 eintragen.<br>Auswertung erscheint hier automatisch.</div>
+  </div>
+  <div id="ebody" style="display:none;">
+    <div class="sec">Auswertung</div>
     <div id="presults"></div>
-    <div class="slabel" style="padding-top:8px">Neue Reihenfolge</div>
+    <div class="sec" style="margin-top:8px;">Neue Reihenfolge</div>
     <div id="rklist"></div>
     <div class="ibox"><b>Reihenfolge:</b> Siege &rarr; Satzdifferenz &rarr; Spieledifferenz &rarr; M&uuml;nzwurf</div>
   </div>
 </div>
 
-<!-- BOTTOM -->
 <div class="bot">
-  <button class="bbot bdel" onclick="delAll()">&#128465; L&ouml;schen</button>
-  <button class="bbot bprt" onclick="window.print()">&#128424; Drucken</button>
+  <button class="bbt bdel" onclick="delAll()">&#128465; L&ouml;schen</button>
+  <button class="bbt bprt" onclick="druck()">&#128424; Drucken</button>
 </div>
 
 <script>
-// Paarungen (0-basiert)
+// Paarungen (Index 0-basiert)
+// Spiel1: P0+P1 vs P2+P3
+// Spiel2: P0+P2 vs P1+P3
+// Spiel3: P0+P3 vs P1+P2
 var MU=[{a:[0,1],b:[2,3]},{a:[0,2],b:[1,3]},{a:[0,3],b:[1,2]}];
-var BK=['b1','b2','b3','b4'];
-
-// Verstecke Banner wenn bereits als PWA
-if(window.navigator.standalone===true){
-  document.getElementById('ibanner').style.display='none';
-}
+var BC=['b1','b2','b3','b4'];
 
 function go(i){
   for(var x=0;x<5;x++){
-    document.getElementById('t'+x).className=x===i?'tbtn act':'tbtn';
-    document.getElementById('p'+x).className=x===i?'pnl act':'pnl';
+    document.getElementById('t'+x).className=(x===i)?'tb on':'tb';
+    document.getElementById('p'+x).className=(x===i)?'pnl on':'pnl';
   }
-  document.getElementById('t'+i).scrollIntoView({block:'nearest',inline:'center'});
+  var btn=document.getElementById('t'+i);
+  if(btn&&btn.scrollIntoView){btn.scrollIntoView({block:'nearest',inline:'center'});}
+  window.scrollTo(0,0);
 }
 
-function N(i){var v=document.getElementById('p'+(i+1)).value.trim();return v||('Sp.'+(i+1));}
-function sh(n){return n.length>8?n.slice(0,7)+'…':n;}
-function RV(id){var el=document.getElementById(id);if(!el||el.value==='')return null;var n=parseInt(el.value);return isNaN(n)?null:n;}
+function N(i){
+  var el=document.getElementById('p'+(i+1));
+  if(!el)return'Sp.'+(i+1);
+  var v=el.value.trim();
+  return v?v:'Sp.'+(i+1);
+}
+
+function sh(n){return n.length>9?n.slice(0,8)+'…':n;}
+
+function RV(id){
+  var el=document.getElementById(id);
+  if(!el||el.value==='')return null;
+  var n=parseInt(el.value,10);
+  return isNaN(n)?null:n;
+}
 
 function calcM(mi){
-  var p='m'+(mi+1),sA=0,sB=0,gA=0,gB=0,pl=false;
-  var sets=[[RV(p+'s1a'),RV(p+'s1b')],[RV(p+'s2a'),RV(p+'s2b')],[RV(p+'s3a'),RV(p+'s3b')]];
-  for(var i=0;i<2;i++){
-    var a=sets[i][0],b=sets[i][1];
+  var p='m'+(mi+1);
+  var sA=0,sB=0,gA=0,gB=0,pl=false;
+  // Satz 1+2 normal
+  for(var i=1;i<=2;i++){
+    var a=RV(p+'s'+i+'a'),b=RV(p+'s'+i+'b');
     if(a===null&&b===null)continue;
-    pl=true; a=a||0; b=b||0;
+    pl=true;a=a||0;b=b||0;
     if(a>b)sA++;else if(b>a)sB++;
     gA+=a;gB+=b;
   }
-  var ta=sets[2][0],tb=sets[2][1];
-  if(ta!==null||tb!==null){pl=true;ta=ta||0;tb=tb||0;if(ta>tb)sA++;else if(tb>ta)sB++;gA+=1;gB+=1;}
+  // Satz 3 Tiebreak: 1 Satz, aber je nur 1 Spiel
+  var ta=RV(p+'s3a'),tb=RV(p+'s3b');
+  if(ta!==null||tb!==null){
+    pl=true;ta=ta||0;tb=tb||0;
+    if(ta>tb)sA++;else if(tb>ta)sB++;
+    gA+=1;gB+=1;
+  }
   return{played:pl,W:sA>sB?'A':(sB>sA?'B':null),sA:sA,sB:sB,gA:gA,gB:gB};
 }
 
 function hlW(mi){
   var p='m'+(mi+1);
-  ['s1','s2','s3'].forEach(function(s){
-    var ea=document.getElementById(p+s+'a'),eb=document.getElementById(p+s+'b');
-    if(!ea||!eb)return;
+  for(var s=1;s<=3;s++){
+    var ea=document.getElementById(p+'s'+s+'a');
+    var eb=document.getElementById(p+'s'+s+'b');
+    if(!ea||!eb)continue;
     ea.classList.remove('win');eb.classList.remove('win');
-    var a=RV(p+s+'a'),b=RV(p+s+'b');
-    if(a===null&&b===null)return;
+    var a=RV(p+'s'+s+'a'),b=RV(p+'s'+s+'b');
+    if(a===null&&b===null)continue;
     a=a||0;b=b||0;
-    if(a>b)ea.classList.add('win');else if(b>a)eb.classList.add('win');
-  });
+    if(a>b)ea.classList.add('win');
+    else if(b>a)eb.classList.add('win');
+  }
 }
 
 function upd(){
   var nm=[N(0),N(1),N(2),N(3)];
 
-  // Paarinfo
+  // Paarungsinfo Tab 0
   document.getElementById('pinfo').innerHTML=
     '<div><b>Spiel 1:</b> '+nm[0]+' / '+nm[1]+'&nbsp; vs &nbsp;'+nm[2]+' / '+nm[3]+'</div>'+
     '<div><b>Spiel 2:</b> '+nm[0]+' / '+nm[2]+'&nbsp; vs &nbsp;'+nm[1]+' / '+nm[3]+'</div>'+
     '<div><b>Spiel 3:</b> '+nm[0]+' / '+nm[3]+'&nbsp; vs &nbsp;'+nm[1]+' / '+nm[2]+'</div>';
 
-  // Match-Labels
+  // Match-Team Labels
   var MT=[
-    {ta:'m1ta',tb:'m1tb',a:[0,1],b:[2,3],la:['l1-1a','l1-2a','l1-3a'],lb:['l1-1b','l1-2b','l1-3b']},
-    {ta:'m2ta',tb:'m2tb',a:[0,2],b:[1,3],la:['l2-1a','l2-2a','l2-3a'],lb:['l2-1b','l2-2b','l2-3b']},
-    {ta:'m3ta',tb:'m3tb',a:[0,3],b:[1,2],la:['l3-1a','l3-2a','l3-3a'],lb:['l3-1b','l3-2b','l3-3b']}
+    {ta:'m1a',tb:'m1b',a:[0,1],b:[2,3],
+     la:['l1s1a','l1s2a','l1s3a'],lb:['l1s1b','l1s2b','l1s3b']},
+    {ta:'m2a',tb:'m2b',a:[0,2],b:[1,3],
+     la:['l2s1a','l2s2a','l2s3a'],lb:['l2s1b','l2s2b','l2s3b']},
+    {ta:'m3a',tb:'m3b',a:[0,3],b:[1,2],
+     la:['l3s1a','l3s2a','l3s3a'],lb:['l3s1b','l3s2b','l3s3b']}
   ];
   MT.forEach(function(m,mi){
-    var tA=nm[m.a[0]]+' / '+nm[m.a[1]],tB=nm[m.b[0]]+' / '+nm[m.b[1]];
-    var sA=sh(nm[m.a[0]])+'/'+sh(nm[m.a[1]]),sB=sh(nm[m.b[0]])+'/'+sh(nm[m.b[1]]);
+    var tA=nm[m.a[0]]+' / '+nm[m.a[1]];
+    var tB=nm[m.b[0]]+' / '+nm[m.b[1]];
+    var sA=sh(nm[m.a[0]])+'/'+sh(nm[m.a[1]]);
+    var sB=sh(nm[m.b[0]])+'/'+sh(nm[m.b[1]]);
     document.getElementById(m.ta).textContent=tA;
     document.getElementById(m.tb).textContent=tB;
     m.la.forEach(function(id){document.getElementById(id).textContent=sA;});
@@ -366,8 +402,10 @@ function upd(){
     hlW(mi);
   });
 
-  // Stats
-  var st=[0,1,2,3].map(function(i){return{name:nm[i],wins:0,losses:0,sW:0,sL:0,gW:0,gL:0,det:[]};});
+  // Statistiken sammeln
+  var st=[0,1,2,3].map(function(i){
+    return{name:nm[i],wins:0,losses:0,sW:0,sL:0,gW:0,gL:0,det:[]};
+  });
   var any=false;
 
   MU.forEach(function(mu,mi){
@@ -376,24 +414,33 @@ function upd(){
     any=true;
     var a0=mu.a[0],a1=mu.a[1],b0=mu.b[0],b1=mu.b[1];
     var wA=r.W==='A',wB=r.W==='B';
+
     [a0,a1].forEach(function(idx){
       var par=idx===a0?a1:a0;
       if(wA)st[idx].wins++;else if(wB)st[idx].losses++;
-      st[idx].sW+=r.sA;st[idx].sL+=r.sB;st[idx].gW+=r.gA;st[idx].gL+=r.gB;
-      st[idx].det.push({nr:mi+1,par:nm[par],opp:nm[b0]+' / '+nm[b1],won:wA,sW:r.sA,sL:r.sB,gW:r.gA,gL:r.gB});
+      st[idx].sW+=r.sA;st[idx].sL+=r.sB;
+      st[idx].gW+=r.gA;st[idx].gL+=r.gB;
+      st[idx].det.push({nr:mi+1,par:nm[par],
+        opp:nm[b0]+'/'+nm[b1],won:wA,
+        sW:r.sA,sL:r.sB,gW:r.gA,gL:r.gB});
     });
     [b0,b1].forEach(function(idx){
       var par=idx===b0?b1:b0;
       if(wB)st[idx].wins++;else if(wA)st[idx].losses++;
-      st[idx].sW+=r.sB;st[idx].sL+=r.sA;st[idx].gW+=r.gB;st[idx].gL+=r.gA;
-      st[idx].det.push({nr:mi+1,par:nm[par],opp:nm[a0]+' / '+nm[a1],won:wB,sW:r.sB,sL:r.sA,gW:r.gB,gL:r.gA});
+      st[idx].sW+=r.sB;st[idx].sL+=r.sA;
+      st[idx].gW+=r.gB;st[idx].gL+=r.gA;
+      st[idx].det.push({nr:mi+1,par:nm[par],
+        opp:nm[a0]+'/'+nm[a1],won:wB,
+        sW:r.sB,sL:r.sA,gW:r.gB,gL:r.gA});
     });
   });
 
-  document.getElementById('ewhint').style.display=any?'none':'';
-  document.getElementById('ewbody').style.display=any?'':'none';
+  // Anzeige
+  document.getElementById('ehint').style.display=any?'none':'';
+  document.getElementById('ebody').style.display=any?'':'none';
   if(!any)return;
 
+  // Sortieren: Siege > Satzdiff > Spielediff
   var rk=[0,1,2,3].map(function(i){return Object.assign({i:i},st[i]);});
   rk.sort(function(a,b){
     if(b.wins!==a.wins)return b.wins-a.wins;
@@ -401,21 +448,28 @@ function upd(){
     return(b.gW-b.gL)-(a.gW-a.gL);
   });
 
-  // Spielerkarten
+  // Spieler-Karten
   var pr=document.getElementById('presults');
   pr.innerHTML='';
   rk.forEach(function(s,pos){
-    var sc=s.wins>s.losses?'g':'n';
+    var vc=s.wins>s.losses?'g':'gr';
     var dh=s.det.map(function(d){
-      return '<div class="kdet"><span class="kdnr">Sp.'+d.nr+'</span><span>mit '+d.par+' vs '+d.opp+'</span><span class="kdres '+(d.won?'wc':'lc')+'">'+(d.won?'Sieg':'Nied.')+'</span></div>';
+      return'<div class="kdet">'
+        +'<span class="kdnr">Sp.'+d.nr+'</span>'
+        +'<span>mit '+d.par+' vs '+d.opp+'</span>'
+        +'<span class="kdres '+(d.won?'gc':'lc')+'">'+(d.won?'Sieg':'Nied.')+'</span>'
+        +'</div>';
     }).join('');
     pr.innerHTML+=
-      '<div class="pkard">'
-        +'<div class="ktop"><span class="rkb '+BK[pos]+'">'+(pos+1)+'</span><span class="kname">'+s.name+'</span></div>'
+      '<div class="pkarte">'
+        +'<div class="ktop">'
+          +'<span class="rkb '+BC[pos]+'">'+(pos+1)+'</span>'
+          +'<span class="kname">'+s.name+'</span>'
+        +'</div>'
         +'<div class="kstats">'
-          +'<div class="kstat"><div class="kslbl">Siege</div><div class="ksval '+sc+'">'+s.wins+':'+s.losses+'</div></div>'
-          +'<div class="kstat"><div class="kslbl">Sätze</div><div class="ksval">'+s.sW+':'+s.sL+'</div></div>'
-          +'<div class="kstat"><div class="kslbl">Spiele</div><div class="ksval">'+s.gW+':'+s.gL+'</div></div>'
+          +'<div class="kstat"><div class="kstlbl">Siege</div><div class="kstval '+vc+'">'+s.wins+':'+s.losses+'</div></div>'
+          +'<div class="kstat"><div class="kstlbl">Sätze</div><div class="kstval">'+s.sW+':'+s.sL+'</div></div>'
+          +'<div class="kstat"><div class="kstlbl">Spiele</div><div class="kstval">'+s.gW+':'+s.gL+'</div></div>'
         +'</div>'
         +'<div class="kdets">'+dh+'</div>'
       +'</div>';
@@ -424,13 +478,13 @@ function upd(){
   // Rangliste
   var rl=document.getElementById('rklist');
   rl.innerHTML='';
-  var tags=[{t:'Aufsteiger',c:'tu'},{t:'',c:''},{t:'',c:''},{t:'Absteiger',c:'td'}];
+  var tags=[{t:'Aufsteiger',c:'tgu'},{t:'',c:''},{t:'',c:''},{t:'Absteiger',c:'tgd'}];
   var pc=['r1','','','r4'];
   rk.forEach(function(s,pos){
     var t=tags[pos];
     rl.innerHTML+=
       '<div class="rki '+(pc[pos]||'')+'">'
-        +'<span class="rkb '+BK[pos]+'">'+(pos+1)+'</span>'
+        +'<span class="rkb '+BC[pos]+'">'+(pos+1)+'</span>'
         +'<span>'+s.name+'</span>'
         +(t.t?'<span class="rktag '+t.c+'">'+t.t+'</span>':'')
       +'</div>';
@@ -439,22 +493,44 @@ function upd(){
 
 function delAll(){
   if(!confirm('Alle Eingaben löschen?'))return;
-  ['p1','p2','p3','p4','liga','datum'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
-  for(var m=1;m<=3;m++)for(var s=1;s<=3;s++)['a','b'].forEach(function(x){
-    var el=document.getElementById('m'+m+'s'+s+x);
-    if(el){el.value='';el.classList.remove('win');}
+  ['p1','p2','p3','p4','liga','datum'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.value='';
   });
-  upd();go(0);
+  for(var m=1;m<=3;m++){
+    for(var s=1;s<=3;s++){
+      ['a','b'].forEach(function(x){
+        var el=document.getElementById('m'+m+'s'+s+x);
+        if(el){el.value='';el.classList.remove('win');}
+      });
+    }
+  }
+  upd();
+  go(0);
 }
 
-// Service Worker registrieren
+function druck(){
+  // Alle Panels kurz sichtbar machen fuer Print
+  for(var x=0;x<5;x++){document.getElementById('p'+x).style.display='block';}
+  window.print();
+  // Danach wieder Tab-State herstellen
+  setTimeout(function(){
+    for(var x=0;x<5;x++){
+      var el=document.getElementById('p'+x);
+      el.style.display='';
+      el.className=el.className.indexOf('on')>=0?'pnl on':'pnl';
+    }
+  },500);
+}
+
+// Service Worker
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
-    navigator.serviceWorker.register('./sw.js').catch(function(){});
+    navigator.serviceWorker.register('sw.js').catch(function(e){console.log('SW:',e);});
   });
 }
 
-document.getElementById('datum').valueAsDate=new Date();
+// Init
+try{document.getElementById('datum').valueAsDate=new Date();}catch(e){}
 upd();
 </script>
 </body>
