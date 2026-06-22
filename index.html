@@ -4,121 +4,97 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Padel Liga">
 <meta name="theme-color" content="#085041">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
 <title>Padel Liga Spieltag</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0.1);}
-html,body{height:100%;-webkit-text-size-adjust:100%;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:#EDECEA;color:#1A1A1A;font-size:16px;padding-bottom:80px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,sans-serif;background:#EDECEA;color:#1A1A1A;font-size:16px;padding-bottom:80px;}
 
-/* HEADER */
-.hdr{background:#085041;padding:12px 16px 10px;}
-.hdr h1{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;}
+.hdr{background:#085041;padding:14px 16px 12px;}
+.hdr h1{font-size:20px;font-weight:800;color:#fff;margin-bottom:10px;}
 .hdr-row{display:flex;gap:8px;}
-.hdr input{flex:1;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;color:#fff;font-size:14px;padding:8px 11px;font-family:inherit;-webkit-appearance:none;}
-.hdr input::placeholder{color:rgba(255,255,255,0.6);}
+.hdr-row input{flex:1;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);border-radius:10px;color:#fff;font-size:14px;padding:8px 11px;font-family:inherit;}
+.hdr-row input::placeholder{color:rgba(255,255,255,0.6);}
 
-/* TABS */
-.tabs{background:#fff;border-bottom:2px solid #D5D3CB;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:99;}
-.tabs::-webkit-scrollbar{display:none;}
-.tb{flex:0 0 auto;padding:13px 16px 10px;font-size:12px;font-weight:700;color:#999;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;font-family:inherit;-webkit-appearance:none;display:block;}
-.tb.on{color:#085041;border-bottom-color:#1D9E75;}
+.tabrow{background:#fff;border-bottom:2px solid #ccc;display:flex;overflow-x:scroll;}
+.tabrow button{flex:0 0 auto;padding:12px 16px;font-size:12px;font-weight:700;color:#999;background:none;border:none;border-bottom:3px solid transparent;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;font-family:inherit;}
+.tabrow button.aktiv{color:#085041;border-bottom-color:#1D9E75;}
 
-/* PANELS */
-.pnl{padding:14px;display:none;}
-.pnl.on{display:block;}
+.seite{display:none;padding:14px;}
+.seite.aktiv{display:block;}
 
-/* CARD */
-.card{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
-.ctitle{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;margin-bottom:12px;}
+.karte{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;}
 
-/* SPIELER INPUTS */
-.prow{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.prow:last-child{margin-bottom:0;}
-.pnum{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;}
-.prow input{flex:1;border:1.5px solid #D5D3CB;border-radius:10px;padding:11px 13px;font-size:17px;font-family:inherit;color:#1A1A1A;background:#fff;-webkit-appearance:none;}
-.prow input:focus{outline:none;border-color:#1D9E75;background:#F5FBF8;}
+.sp-zeile{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.sp-zeile:last-child{margin-bottom:0;}
+.sp-nr{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;}
+.sp-zeile input{flex:1;border:1.5px solid #ccc;border-radius:10px;padding:11px 13px;font-size:17px;font-family:inherit;color:#1A1A1A;background:#fff;}
+.sp-zeile input:focus{outline:none;border-color:#1D9E75;}
 
-/* MATCH KARTE */
-.mhdr{background:#085041;color:#fff;margin:-16px -16px 0 -16px;border-radius:14px 14px 0 0;padding:11px 16px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;}
-.mteam{background:#E0F5EE;margin:0 -16px 16px -16px;padding:10px 16px;font-size:15px;font-weight:700;color:#085041;line-height:1.75;}
-.mvs{font-size:11px;color:#888;font-weight:400;}
+.match-kopf{background:#085041;color:#fff;margin:-16px -16px 0 -16px;border-radius:14px 14px 0 0;padding:11px 16px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;}
+.match-teams{background:#E0F5EE;margin:0 -16px 16px -16px;padding:10px 16px;font-size:15px;font-weight:700;color:#085041;line-height:1.8;}
+.match-vs{font-size:11px;color:#888;font-weight:400;}
 
-/* SATZ */
-.satz{margin-bottom:18px;}
-.satz:last-child{margin-bottom:0;}
-.stitle{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#aaa;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
-.tbpill{font-size:10px;background:#FAEEDA;color:#BA7517;padding:2px 8px;border-radius:10px;font-weight:700;text-transform:none;letter-spacing:0;}
+.satz-block{margin-bottom:16px;}
+.satz-block:last-child{margin-bottom:0;}
+.satz-titel{font-size:12px;font-weight:700;text-transform:uppercase;color:#aaa;margin-bottom:8px;letter-spacing:.05em;}
+.tb-pill{font-size:10px;background:#FAEEDA;color:#BA7517;padding:2px 7px;border-radius:10px;font-weight:700;text-transform:none;letter-spacing:0;margin-left:6px;}
 
-.sgrid{display:grid;grid-template-columns:1fr 24px 1fr;align-items:flex-end;gap:6px;}
-.scol{display:flex;flex-direction:column;gap:3px;}
-.slbl{font-size:11px;color:#aaa;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.sinp{width:100%;border:1.5px solid #D5D3CB;border-radius:12px;padding:10px 4px;text-align:center;font-size:28px;font-weight:800;font-family:inherit;color:#1A1A1A;background:#fff;-webkit-appearance:none;appearance:none;}
-.sinp:focus{outline:none;border-color:#1D9E75;box-shadow:0 0 0 3px rgba(29,158,117,0.12);background:#F5FBF8;}
-.sinp.win{border-color:#1D9E75 !important;background:#E0F5EE !important;color:#085041 !important;}
-.sep{text-align:center;font-size:24px;font-weight:800;color:#ccc;padding-bottom:8px;}
+.eingabe-reihe{display:grid;grid-template-columns:1fr 28px 1fr;align-items:flex-end;gap:6px;}
+.eingabe-spalte{display:flex;flex-direction:column;gap:3px;}
+.eingabe-name{font-size:11px;color:#aaa;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.zahl-feld{width:100%;border:1.5px solid #ccc;border-radius:12px;padding:10px 4px;text-align:center;font-size:28px;font-weight:800;font-family:inherit;color:#1A1A1A;background:#fff;}
+.zahl-feld:focus{outline:none;border-color:#1D9E75;background:#F5FBF8;}
+.zahl-feld.sieger{border-color:#1D9E75;background:#E0F5EE;color:#085041;}
+.doppelpunkt{text-align:center;font-size:24px;font-weight:800;color:#ccc;padding-bottom:8px;}
 
-/* ERGEBNIS */
-.ehint{text-align:center;color:#aaa;padding:28px 12px;font-size:15px;line-height:1.7;}
+.hinweis-leer{text-align:center;color:#aaa;padding:28px 12px;font-size:15px;line-height:1.7;}
 
-.pkarte{background:#fff;border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
-.ktop{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid #EDECEA;}
-.kname{font-size:17px;font-weight:800;flex:1;}
-.kstats{display:grid;grid-template-columns:1fr 1fr 1fr;}
-.kstat{text-align:center;padding:10px 6px;border-right:1px solid #EDECEA;}
-.kstat:last-child{border-right:none;}
-.kstlbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#aaa;margin-bottom:3px;}
-.kstval{font-size:20px;font-weight:800;}
-.kstval.g{color:#085041;}
-.kstval.gr{color:#aaa;font-weight:500;}
-.kdets{padding:8px 16px 10px;}
-.kdet{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #EDECEA;font-size:13px;color:#aaa;}
-.kdet:last-child{border-bottom:none;}
-.kdnr{font-size:12px;font-weight:800;color:#085041;min-width:34px;}
-.kdres{margin-left:auto;font-weight:800;font-size:13px;}
-.gc{color:#085041;}.lc{color:#ccc;}
+.spieler-karte{background:#fff;border-radius:14px;margin-bottom:12px;overflow:hidden;}
+.sk-kopf{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid #EDECEA;}
+.sk-name{font-size:17px;font-weight:800;flex:1;}
+.sk-werte{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.sk-wert{text-align:center;padding:10px 6px;border-right:1px solid #EDECEA;}
+.sk-wert:last-child{border-right:none;}
+.sk-label{font-size:10px;text-transform:uppercase;color:#aaa;letter-spacing:.05em;margin-bottom:3px;}
+.sk-zahl{font-size:20px;font-weight:800;}
+.sk-zahl.gruen{color:#085041;}
+.sk-zahl.grau{color:#aaa;font-weight:500;}
+.sk-details{padding:8px 16px 10px;}
+.sk-detail{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #EDECEA;font-size:13px;color:#aaa;}
+.sk-detail:last-child{border-bottom:none;}
+.sk-detail-nr{font-size:12px;font-weight:800;color:#085041;min-width:34px;}
+.sk-detail-res{margin-left:auto;font-weight:800;font-size:13px;}
+.sieg-farbe{color:#085041;}
+.nied-farbe{color:#ccc;}
 
-/* RANGLISTE */
-.rki{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-size:17px;font-weight:700;border:1.5px solid transparent;}
-.rki.r1{background:#FFFBF0;border-color:#FAC775;}
-.rki.r4{background:#FFF8F8;border-color:#F7C1C1;}
-.rkb{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;}
-.b1{background:#FAC775;color:#412402;}
-.b2{background:#D3D1C7;color:#2C2C2A;}
-.b3{background:#F5C4B3;color:#4A1B0C;}
-.b4{background:#EDECEA;color:#aaa;border:1px solid #D5D3CB;}
-.rktag{margin-left:auto;font-size:12px;font-weight:700;padding:3px 11px;border-radius:20px;}
-.tgu{background:#E0F5EE;color:#085041;}
-.tgd{background:#FCEBEB;color:#A32D2D;}
+.rang-eintrag{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;font-size:17px;font-weight:700;border:1.5px solid transparent;}
+.rang-eintrag.platz1{background:#FFFBF0;border-color:#FAC775;}
+.rang-eintrag.platz4{background:#FFF8F8;border-color:#F7C1C1;}
+.rang-nr{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;}
+.rn1{background:#FAC775;color:#412402;}
+.rn2{background:#D3D1C7;color:#2C2C2A;}
+.rn3{background:#F5C4B3;color:#4A1B0C;}
+.rn4{background:#EDECEA;color:#aaa;border:1px solid #ccc;}
+.rang-tag{margin-left:auto;font-size:12px;font-weight:700;padding:3px 11px;border-radius:20px;}
+.tag-auf{background:#E0F5EE;color:#085041;}
+.tag-ab{background:#FCEBEB;color:#A32D2D;}
 
-/* INFO */
-.ibox{background:#FAEEDA;border-left:3px solid #BA7517;border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#412402;line-height:1.75;margin-bottom:12px;}
-.ibox b{color:#BA7517;}
+.info-box{background:#FAEEDA;border-left:3px solid #BA7517;border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#412402;line-height:1.75;margin-bottom:12px;}
+.info-box b{color:#BA7517;}
 
-.sec{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:2px 2px 7px;}
+.abschnitt{font-size:11px;font-weight:700;text-transform:uppercase;color:#aaa;letter-spacing:.07em;padding:4px 2px 7px;}
 
-/* BOTTOM */
-.bot{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1.5px solid #D5D3CB;padding:10px 16px;padding-bottom:max(10px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:100;}
-.bbt{flex:1;padding:14px;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;border:none;cursor:pointer;-webkit-appearance:none;}
-.bdel{background:#FCEBEB;color:#A32D2D;}
-.bprt{background:#1D9E75;color:#fff;}
+.aktionsleiste{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #ccc;padding:10px 16px;display:flex;gap:10px;z-index:999;}
+.aktions-btn{flex:1;padding:14px;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;border:none;cursor:pointer;}
+.btn-loeschen{background:#FCEBEB;color:#A32D2D;}
+.btn-drucken{background:#1D9E75;color:#fff;}
 
-/* PAARINFO */
-.pinfo{font-size:14px;color:#555;line-height:2.2;}
-.pinfo b{color:#085041;}
+.paarinfo{font-size:14px;color:#555;line-height:2.2;}
+.paarinfo b{color:#085041;}
 
-@media print{
-  .tabs,.bot,.hdr{display:none!important;}
-  .pnl{display:block!important;padding:6px;}
-  body{background:#fff;padding:0;}
-  .card,.pkarte,.rki{box-shadow:none!important;border:1px solid #ddd!important;page-break-inside:avoid;}
-  .mhdr,.mteam,.b1,.b2,.b3,.tgu,.tgd,.rki.r1,.rki.r4,.sinp.win
-  {-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
-}
+.abschnitt-titel{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;margin-bottom:12px;}
 </style>
 </head>
 <body>
@@ -126,412 +102,527 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-se
 <div class="hdr">
   <h1>&#127955; Padel Liga &ndash; Spieltag</h1>
   <div class="hdr-row">
-    <input type="text" id="liga" placeholder="Liga / Gruppe">
+    <input type="text" id="liga" placeholder="Liga / Gruppe" autocomplete="off">
     <input type="date" id="datum">
   </div>
 </div>
 
-<div class="tabs" id="tabbar">
-  <button class="tb on" id="t0" onclick="go(0)">Spieler</button>
-  <button class="tb" id="t1" onclick="go(1)">Spiel&nbsp;1</button>
-  <button class="tb" id="t2" onclick="go(2)">Spiel&nbsp;2</button>
-  <button class="tb" id="t3" onclick="go(3)">Spiel&nbsp;3</button>
-  <button class="tb" id="t4" onclick="go(4)">Ergebnis</button>
+<div class="tabrow" id="tabs">
+  <button onclick="zeige(0)" id="tab0" class="aktiv">Spieler</button>
+  <button onclick="zeige(1)" id="tab1">Spiel 1</button>
+  <button onclick="zeige(2)" id="tab2">Spiel 2</button>
+  <button onclick="zeige(3)" id="tab3">Spiel 3</button>
+  <button onclick="zeige(4)" id="tab4">Ergebnis</button>
 </div>
 
-<!-- PANEL 0: SPIELER -->
-<div class="pnl on" id="p0">
-  <div class="card">
-    <div class="ctitle">Namen eintragen</div>
-    <div class="prow">
-      <div class="pnum" style="background:#1D9E75;">1</div>
-      <input type="text" id="p1" placeholder="Spieler 1" autocomplete="off" oninput="upd()">
+<!-- SEITE 0: SPIELER -->
+<div class="seite aktiv" id="s0">
+  <div class="karte">
+    <div class="abschnitt-titel">Namen eintragen</div>
+    <div class="sp-zeile">
+      <div class="sp-nr" style="background:#1D9E75">1</div>
+      <input type="text" id="p1" placeholder="Spieler 1" autocomplete="off" oninput="berechne()">
     </div>
-    <div class="prow">
-      <div class="pnum" style="background:#BA7517;">2</div>
-      <input type="text" id="p2" placeholder="Spieler 2" autocomplete="off" oninput="upd()">
+    <div class="sp-zeile">
+      <div class="sp-nr" style="background:#BA7517">2</div>
+      <input type="text" id="p2" placeholder="Spieler 2" autocomplete="off" oninput="berechne()">
     </div>
-    <div class="prow">
-      <div class="pnum" style="background:#5F5E5A;">3</div>
-      <input type="text" id="p3" placeholder="Spieler 3" autocomplete="off" oninput="upd()">
+    <div class="sp-zeile">
+      <div class="sp-nr" style="background:#5F5E5A">3</div>
+      <input type="text" id="p3" placeholder="Spieler 3" autocomplete="off" oninput="berechne()">
     </div>
-    <div class="prow">
-      <div class="pnum" style="background:#A32D2D;">4</div>
-      <input type="text" id="p4" placeholder="Spieler 4" autocomplete="off" oninput="upd()">
+    <div class="sp-zeile">
+      <div class="sp-nr" style="background:#A32D2D">4</div>
+      <input type="text" id="p4" placeholder="Spieler 4" autocomplete="off" oninput="berechne()">
     </div>
   </div>
-  <div class="card">
-    <div class="ctitle">Paarungen</div>
-    <div class="pinfo" id="pinfo">
+
+  <div class="karte">
+    <div class="abschnitt-titel">Paarungen</div>
+    <div class="paarinfo" id="paarinfo">
       <div><b>Spiel 1:</b> Sp.1 / Sp.2 &nbsp;vs&nbsp; Sp.3 / Sp.4</div>
       <div><b>Spiel 2:</b> Sp.1 / Sp.3 &nbsp;vs&nbsp; Sp.2 / Sp.4</div>
       <div><b>Spiel 3:</b> Sp.1 / Sp.4 &nbsp;vs&nbsp; Sp.2 / Sp.3</div>
     </div>
   </div>
-  <div class="ibox">
+
+  <div class="info-box">
     <b>Regeln:</b> Sieg (1:0) &middot; Satz (2:0 oder 2:1) &middot; Spiele gesamt.<br>
     3. Satz = Tiebreak bis 10 &rarr; z&auml;hlt als Satz, aber nur als <em>1&nbsp;Spiel</em>.<br>
     Gleichstand &rarr; M&uuml;nzwurf.
   </div>
 </div>
 
-<!-- PANEL 1: SPIEL 1 -->
-<div class="pnl" id="p1">
-  <div class="card">
-    <div class="mhdr">Spiel 1</div>
-    <div class="mteam">
-      <span id="m1a">Sp.1 / Sp.2</span><br>
-      <span class="mvs">&#8212;&nbsp;vs&nbsp;&#8212;</span><br>
-      <span id="m1b">Sp.3 / Sp.4</span>
+<!-- SEITE 1: SPIEL 1 (P1+P2 vs P3+P4) -->
+<div class="seite" id="s1">
+  <div class="karte">
+    <div class="match-kopf">Spiel 1</div>
+    <div class="match-teams">
+      <span id="t1a">Sp.1 / Sp.2</span><br>
+      <span class="match-vs">&#8212; vs &#8212;</span><br>
+      <span id="t1b">Sp.3 / Sp.4</span>
     </div>
-    <div class="satz">
-      <div class="stitle">1. Satz</div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l1s1a">Sp.1/2</div><input class="sinp" id="m1s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l1s1b">Sp.3/4</div><input class="sinp" id="m1s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">1. Satz</div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n1s1a">Sp.1/Sp.2</div>
+          <input class="zahl-feld" id="m1s1a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n1s1b">Sp.3/Sp.4</div>
+          <input class="zahl-feld" id="m1s1b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
-    <div class="satz">
-      <div class="stitle">2. Satz</div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l1s2a">Sp.1/2</div><input class="sinp" id="m1s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l1s2b">Sp.3/4</div><input class="sinp" id="m1s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">2. Satz</div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n1s2a">Sp.1/Sp.2</div>
+          <input class="zahl-feld" id="m1s2a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n1s2b">Sp.3/Sp.4</div>
+          <input class="zahl-feld" id="m1s2b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
-    <div class="satz">
-      <div class="stitle">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l1s3a">Sp.1/2</div><input class="sinp" id="m1s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l1s3b">Sp.3/4</div><input class="sinp" id="m1s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">3. Satz<span class="tb-pill">Tiebreak bis 10</span></div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n1s3a">Sp.1/Sp.2</div>
+          <input class="zahl-feld" id="m1s3a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n1s3b">Sp.3/Sp.4</div>
+          <input class="zahl-feld" id="m1s3b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PANEL 2: SPIEL 2 -->
-<div class="pnl" id="p2">
-  <div class="card">
-    <div class="mhdr">Spiel 2</div>
-    <div class="mteam">
-      <span id="m2a">Sp.1 / Sp.3</span><br>
-      <span class="mvs">&#8212;&nbsp;vs&nbsp;&#8212;</span><br>
-      <span id="m2b">Sp.2 / Sp.4</span>
+<!-- SEITE 2: SPIEL 2 (P1+P3 vs P2+P4) -->
+<div class="seite" id="s2">
+  <div class="karte">
+    <div class="match-kopf">Spiel 2</div>
+    <div class="match-teams">
+      <span id="t2a">Sp.1 / Sp.3</span><br>
+      <span class="match-vs">&#8212; vs &#8212;</span><br>
+      <span id="t2b">Sp.2 / Sp.4</span>
     </div>
-    <div class="satz">
-      <div class="stitle">1. Satz</div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l2s1a">Sp.1/3</div><input class="sinp" id="m2s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l2s1b">Sp.2/4</div><input class="sinp" id="m2s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">1. Satz</div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n2s1a">Sp.1/Sp.3</div>
+          <input class="zahl-feld" id="m2s1a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n2s1b">Sp.2/Sp.4</div>
+          <input class="zahl-feld" id="m2s1b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
-    <div class="satz">
-      <div class="stitle">2. Satz</div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l2s2a">Sp.1/3</div><input class="sinp" id="m2s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l2s2b">Sp.2/4</div><input class="sinp" id="m2s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">2. Satz</div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n2s2a">Sp.1/Sp.3</div>
+          <input class="zahl-feld" id="m2s2a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n2s2b">Sp.2/Sp.4</div>
+          <input class="zahl-feld" id="m2s2b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
-    <div class="satz">
-      <div class="stitle">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l2s3a">Sp.1/3</div><input class="sinp" id="m2s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l2s3b">Sp.2/4</div><input class="sinp" id="m2s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">3. Satz<span class="tb-pill">Tiebreak bis 10</span></div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n2s3a">Sp.1/Sp.3</div>
+          <input class="zahl-feld" id="m2s3a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n2s3b">Sp.2/Sp.4</div>
+          <input class="zahl-feld" id="m2s3b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PANEL 3: SPIEL 3 -->
-<div class="pnl" id="p3">
-  <div class="card">
-    <div class="mhdr">Spiel 3</div>
-    <div class="mteam">
-      <span id="m3a">Sp.1 / Sp.4</span><br>
-      <span class="mvs">&#8212;&nbsp;vs&nbsp;&#8212;</span><br>
-      <span id="m3b">Sp.2 / Sp.3</span>
+<!-- SEITE 3: SPIEL 3 (P1+P4 vs P2+P3) -->
+<div class="seite" id="s3">
+  <div class="karte">
+    <div class="match-kopf">Spiel 3</div>
+    <div class="match-teams">
+      <span id="t3a">Sp.1 / Sp.4</span><br>
+      <span class="match-vs">&#8212; vs &#8212;</span><br>
+      <span id="t3b">Sp.2 / Sp.3</span>
     </div>
-    <div class="satz">
-      <div class="stitle">1. Satz</div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l3s1a">Sp.1/4</div><input class="sinp" id="m3s1a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l3s1b">Sp.2/3</div><input class="sinp" id="m3s1b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">1. Satz</div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n3s1a">Sp.1/Sp.4</div>
+          <input class="zahl-feld" id="m3s1a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n3s1b">Sp.2/Sp.3</div>
+          <input class="zahl-feld" id="m3s1b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
-    <div class="satz">
-      <div class="stitle">2. Satz</div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l3s2a">Sp.1/4</div><input class="sinp" id="m3s2a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l3s2b">Sp.2/3</div><input class="sinp" id="m3s2b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">2. Satz</div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n3s2a">Sp.1/Sp.4</div>
+          <input class="zahl-feld" id="m3s2a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n3s2b">Sp.2/Sp.3</div>
+          <input class="zahl-feld" id="m3s2b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
-    <div class="satz">
-      <div class="stitle">3. Satz <span class="tbpill">Tiebreak bis 10</span></div>
-      <div class="sgrid">
-        <div class="scol"><div class="slbl" id="l3s3a">Sp.1/4</div><input class="sinp" id="m3s3a" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
-        <div class="sep">:</div>
-        <div class="scol"><div class="slbl" id="l3s3b">Sp.2/3</div><input class="sinp" id="m3s3b" type="number" min="0" max="99" inputmode="numeric" oninput="upd()"></div>
+
+    <div class="satz-block">
+      <div class="satz-titel">3. Satz<span class="tb-pill">Tiebreak bis 10</span></div>
+      <div class="eingabe-reihe">
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n3s3a">Sp.1/Sp.4</div>
+          <input class="zahl-feld" id="m3s3a" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
+        <div class="doppelpunkt">:</div>
+        <div class="eingabe-spalte">
+          <div class="eingabe-name" id="n3s3b">Sp.2/Sp.3</div>
+          <input class="zahl-feld" id="m3s3b" type="number" min="0" max="99" inputmode="numeric" oninput="berechne()">
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PANEL 4: ERGEBNIS -->
-<div class="pnl" id="p4">
-  <div id="ehint" class="card">
-    <div class="ehint">&#9203; Ergebnisse in Spiel&nbsp;1&#8211;3 eintragen.<br>Auswertung erscheint hier automatisch.</div>
+<!-- SEITE 4: ERGEBNIS -->
+<div class="seite" id="s4">
+  <div id="leer-hinweis" class="karte">
+    <div class="hinweis-leer">&#9203; Ergebnisse in Spiel 1&#8211;3 eintragen.<br>Auswertung erscheint hier automatisch.</div>
   </div>
-  <div id="ebody" style="display:none;">
-    <div class="sec">Auswertung</div>
-    <div id="presults"></div>
-    <div class="sec" style="margin-top:8px;">Neue Reihenfolge</div>
-    <div id="rklist"></div>
-    <div class="ibox"><b>Reihenfolge:</b> Siege &rarr; Satzdifferenz &rarr; Spieledifferenz &rarr; M&uuml;nzwurf</div>
+  <div id="ergebnis-inhalt" style="display:none">
+    <div class="abschnitt">Auswertung</div>
+    <div id="spieler-karten"></div>
+    <div class="abschnitt" style="margin-top:8px">Neue Reihenfolge</div>
+    <div id="rangliste"></div>
+    <div class="info-box"><b>Reihenfolge:</b> Siege &rarr; Satzdifferenz &rarr; Spieledifferenz &rarr; M&uuml;nzwurf</div>
   </div>
 </div>
 
-<div class="bot">
-  <button class="bbt bdel" onclick="delAll()">&#128465; L&ouml;schen</button>
-  <button class="bbt bprt" onclick="druck()">&#128424; Drucken</button>
+<div class="aktionsleiste">
+  <button class="aktions-btn btn-loeschen" onclick="allesLoeschen()">&#128465; L&ouml;schen</button>
+  <button class="aktions-btn btn-drucken" onclick="drucken()">&#128424; Drucken</button>
 </div>
 
 <script>
-// Paarungen (Index 0-basiert)
-// Spiel1: P0+P1 vs P2+P3
-// Spiel2: P0+P2 vs P1+P3
-// Spiel3: P0+P3 vs P1+P2
-var MU=[{a:[0,1],b:[2,3]},{a:[0,2],b:[1,3]},{a:[0,3],b:[1,2]}];
-var BC=['b1','b2','b3','b4'];
+// ---- PAARUNGEN ----
+// Spiel1: P1+P2 vs P3+P4  (Index 0-basiert: 0+1 vs 2+3)
+// Spiel2: P1+P3 vs P2+P4  (0+2 vs 1+3)
+// Spiel3: P1+P4 vs P2+P3  (0+3 vs 1+2)
+var PAARUNGEN = [
+  {a:[0,1], b:[2,3]},
+  {a:[0,2], b:[1,3]},
+  {a:[0,3], b:[1,2]}
+];
 
-function go(i){
-  for(var x=0;x<5;x++){
-    document.getElementById('t'+x).className=(x===i)?'tb on':'tb';
-    document.getElementById('p'+x).className=(x===i)?'pnl on':'pnl';
+var RANG_KLASSEN = ['rn1','rn2','rn3','rn4'];
+
+// ---- TAB WECHSEL ----
+function zeige(nr) {
+  for (var i = 0; i < 5; i++) {
+    var tab = document.getElementById('tab' + i);
+    var seite = document.getElementById('s' + i);
+    if (i === nr) {
+      tab.className = 'aktiv';
+      seite.className = 'seite aktiv';
+    } else {
+      tab.className = '';
+      seite.className = 'seite';
+    }
   }
-  var btn=document.getElementById('t'+i);
-  if(btn&&btn.scrollIntoView){btn.scrollIntoView({block:'nearest',inline:'center'});}
-  window.scrollTo(0,0);
+  document.getElementById('tab' + nr).scrollIntoView({block:'nearest', inline:'center'});
+  window.scrollTo(0, 0);
 }
 
-function N(i){
-  var el=document.getElementById('p'+(i+1));
-  if(!el)return'Sp.'+(i+1);
-  var v=el.value.trim();
-  return v?v:'Sp.'+(i+1);
+// ---- HILFSFUNKTIONEN ----
+function spielerName(i) {
+  var el = document.getElementById('p' + (i + 1));
+  if (!el) return 'Sp.' + (i + 1);
+  var v = el.value.trim();
+  return v ? v : 'Sp.' + (i + 1);
 }
 
-function sh(n){return n.length>9?n.slice(0,8)+'…':n;}
-
-function RV(id){
-  var el=document.getElementById(id);
-  if(!el||el.value==='')return null;
-  var n=parseInt(el.value,10);
-  return isNaN(n)?null:n;
+function kurz(n) {
+  return n.length > 9 ? n.slice(0, 8) + '…' : n;
 }
 
-function calcM(mi){
-  var p='m'+(mi+1);
-  var sA=0,sB=0,gA=0,gB=0,pl=false;
-  // Satz 1+2 normal
-  for(var i=1;i<=2;i++){
-    var a=RV(p+'s'+i+'a'),b=RV(p+'s'+i+'b');
-    if(a===null&&b===null)continue;
-    pl=true;a=a||0;b=b||0;
-    if(a>b)sA++;else if(b>a)sB++;
-    gA+=a;gB+=b;
+function leseFeld(id) {
+  var el = document.getElementById(id);
+  if (!el || el.value === '') return null;
+  var n = parseInt(el.value, 10);
+  return isNaN(n) ? null : n;
+}
+
+// ---- MATCH BERECHNUNG ----
+function berechneMatch(matchNr) {
+  var p = 'm' + matchNr;
+  var sA = 0, sB = 0, spA = 0, spB = 0, gespielt = false;
+
+  for (var satz = 1; satz <= 2; satz++) {
+    var a = leseFeld(p + 's' + satz + 'a');
+    var b = leseFeld(p + 's' + satz + 'b');
+    if (a === null && b === null) continue;
+    gespielt = true;
+    a = a || 0; b = b || 0;
+    if (a > b) sA++; else if (b > a) sB++;
+    spA += a; spB += b;
   }
-  // Satz 3 Tiebreak: 1 Satz, aber je nur 1 Spiel
-  var ta=RV(p+'s3a'),tb=RV(p+'s3b');
-  if(ta!==null||tb!==null){
-    pl=true;ta=ta||0;tb=tb||0;
-    if(ta>tb)sA++;else if(tb>ta)sB++;
-    gA+=1;gB+=1;
+
+  // 3. Satz Tiebreak: zaehlt als Satz aber nur 1 Spiel pro Seite
+  var ta = leseFeld(p + 's3a');
+  var tb = leseFeld(p + 's3b');
+  if (ta !== null || tb !== null) {
+    gespielt = true;
+    ta = ta || 0; tb = tb || 0;
+    if (ta > tb) sA++; else if (tb > ta) sB++;
+    spA += 1; spB += 1;
   }
-  return{played:pl,W:sA>sB?'A':(sB>sA?'B':null),sA:sA,sB:sB,gA:gA,gB:gB};
+
+  return {
+    gespielt: gespielt,
+    sieger: sA > sB ? 'A' : (sB > sA ? 'B' : null),
+    sA: sA, sB: sB,
+    spA: spA, spB: spB
+  };
 }
 
-function hlW(mi){
-  var p='m'+(mi+1);
-  for(var s=1;s<=3;s++){
-    var ea=document.getElementById(p+'s'+s+'a');
-    var eb=document.getElementById(p+'s'+s+'b');
-    if(!ea||!eb)continue;
-    ea.classList.remove('win');eb.classList.remove('win');
-    var a=RV(p+'s'+s+'a'),b=RV(p+'s'+s+'b');
-    if(a===null&&b===null)continue;
-    a=a||0;b=b||0;
-    if(a>b)ea.classList.add('win');
-    else if(b>a)eb.classList.add('win');
+// ---- GEWINNER FELDER HERVORHEBEN ----
+function hevorheben(matchNr) {
+  var p = 'm' + matchNr;
+  for (var s = 1; s <= 3; s++) {
+    var fa = document.getElementById(p + 's' + s + 'a');
+    var fb = document.getElementById(p + 's' + s + 'b');
+    if (!fa || !fb) continue;
+    fa.classList.remove('sieger');
+    fb.classList.remove('sieger');
+    var a = leseFeld(p + 's' + s + 'a');
+    var b = leseFeld(p + 's' + s + 'b');
+    if (a === null && b === null) continue;
+    a = a || 0; b = b || 0;
+    if (a > b) fa.classList.add('sieger');
+    else if (b > a) fb.classList.add('sieger');
   }
 }
 
-function upd(){
-  var nm=[N(0),N(1),N(2),N(3)];
+// ---- HAUPT-UPDATE ----
+function berechne() {
+  var namen = [spielerName(0), spielerName(1), spielerName(2), spielerName(3)];
 
-  // Paarungsinfo Tab 0
-  document.getElementById('pinfo').innerHTML=
-    '<div><b>Spiel 1:</b> '+nm[0]+' / '+nm[1]+'&nbsp; vs &nbsp;'+nm[2]+' / '+nm[3]+'</div>'+
-    '<div><b>Spiel 2:</b> '+nm[0]+' / '+nm[2]+'&nbsp; vs &nbsp;'+nm[1]+' / '+nm[3]+'</div>'+
-    '<div><b>Spiel 3:</b> '+nm[0]+' / '+nm[3]+'&nbsp; vs &nbsp;'+nm[1]+' / '+nm[2]+'</div>';
+  // Paarungsinfo aktualisieren
+  document.getElementById('paarinfo').innerHTML =
+    '<div><b>Spiel 1:</b> ' + namen[0] + ' / ' + namen[1] + ' &nbsp;vs&nbsp; ' + namen[2] + ' / ' + namen[3] + '</div>' +
+    '<div><b>Spiel 2:</b> ' + namen[0] + ' / ' + namen[2] + ' &nbsp;vs&nbsp; ' + namen[1] + ' / ' + namen[3] + '</div>' +
+    '<div><b>Spiel 3:</b> ' + namen[0] + ' / ' + namen[3] + ' &nbsp;vs&nbsp; ' + namen[1] + ' / ' + namen[2] + '</div>';
 
-  // Match-Team Labels
-  var MT=[
-    {ta:'m1a',tb:'m1b',a:[0,1],b:[2,3],
-     la:['l1s1a','l1s2a','l1s3a'],lb:['l1s1b','l1s2b','l1s3b']},
-    {ta:'m2a',tb:'m2b',a:[0,2],b:[1,3],
-     la:['l2s1a','l2s2a','l2s3a'],lb:['l2s1b','l2s2b','l2s3b']},
-    {ta:'m3a',tb:'m3b',a:[0,3],b:[1,2],
-     la:['l3s1a','l3s2a','l3s3a'],lb:['l3s1b','l3s2b','l3s3b']}
+  // Match-Team-Labels aktualisieren
+  var matchKonfig = [
+    {ta:'t1a', tb:'t1b', a:[0,1], b:[2,3],
+     na:['n1s1a','n1s2a','n1s3a'], nb:['n1s1b','n1s2b','n1s3b']},
+    {ta:'t2a', tb:'t2b', a:[0,2], b:[1,3],
+     na:['n2s1a','n2s2a','n2s3a'], nb:['n2s1b','n2s2b','n2s3b']},
+    {ta:'t3a', tb:'t3b', a:[0,3], b:[1,2],
+     na:['n3s1a','n3s2a','n3s3a'], nb:['n3s1b','n3s2b','n3s3b']}
   ];
-  MT.forEach(function(m,mi){
-    var tA=nm[m.a[0]]+' / '+nm[m.a[1]];
-    var tB=nm[m.b[0]]+' / '+nm[m.b[1]];
-    var sA=sh(nm[m.a[0]])+'/'+sh(nm[m.a[1]]);
-    var sB=sh(nm[m.b[0]])+'/'+sh(nm[m.b[1]]);
-    document.getElementById(m.ta).textContent=tA;
-    document.getElementById(m.tb).textContent=tB;
-    m.la.forEach(function(id){document.getElementById(id).textContent=sA;});
-    m.lb.forEach(function(id){document.getElementById(id).textContent=sB;});
-    hlW(mi);
+
+  matchKonfig.forEach(function(mk, i) {
+    var tA = namen[mk.a[0]] + ' / ' + namen[mk.a[1]];
+    var tB = namen[mk.b[0]] + ' / ' + namen[mk.b[1]];
+    var kA = kurz(namen[mk.a[0]]) + '/' + kurz(namen[mk.a[1]]);
+    var kB = kurz(namen[mk.b[0]]) + '/' + kurz(namen[mk.b[1]]);
+    document.getElementById(mk.ta).textContent = tA;
+    document.getElementById(mk.tb).textContent = tB;
+    mk.na.forEach(function(id) { document.getElementById(id).textContent = kA; });
+    mk.nb.forEach(function(id) { document.getElementById(id).textContent = kB; });
+    hevorheben(i + 1);
   });
 
-  // Statistiken sammeln
-  var st=[0,1,2,3].map(function(i){
-    return{name:nm[i],wins:0,losses:0,sW:0,sL:0,gW:0,gL:0,det:[]};
+  // Statistiken aufbauen
+  var stats = [0,1,2,3].map(function(i) {
+    return {name: namen[i], siege:0, ndln:0, sW:0, sL:0, spW:0, spL:0, details:[]};
   });
-  var any=false;
 
-  MU.forEach(function(mu,mi){
-    var r=calcM(mi);
-    if(!r.played)return;
-    any=true;
-    var a0=mu.a[0],a1=mu.a[1],b0=mu.b[0],b1=mu.b[1];
-    var wA=r.W==='A',wB=r.W==='B';
+  var irgendwasGespielt = false;
 
-    [a0,a1].forEach(function(idx){
-      var par=idx===a0?a1:a0;
-      if(wA)st[idx].wins++;else if(wB)st[idx].losses++;
-      st[idx].sW+=r.sA;st[idx].sL+=r.sB;
-      st[idx].gW+=r.gA;st[idx].gL+=r.gB;
-      st[idx].det.push({nr:mi+1,par:nm[par],
-        opp:nm[b0]+'/'+nm[b1],won:wA,
-        sW:r.sA,sL:r.sB,gW:r.gA,gL:r.gB});
+  PAARUNGEN.forEach(function(pair, pi) {
+    var r = berechneMatch(pi + 1);
+    if (!r.gespielt) return;
+    irgendwasGespielt = true;
+
+    var a0=pair.a[0], a1=pair.a[1], b0=pair.b[0], b1=pair.b[1];
+    var teamAGewonnen = r.sieger === 'A';
+    var teamBGewonnen = r.sieger === 'B';
+
+    pair.a.forEach(function(idx) {
+      var partner = idx === a0 ? a1 : a0;
+      if (teamAGewonnen) stats[idx].siege++; else if (teamBGewonnen) stats[idx].ndln++;
+      stats[idx].sW += r.sA; stats[idx].sL += r.sB;
+      stats[idx].spW += r.spA; stats[idx].spL += r.spB;
+      stats[idx].details.push({
+        nr: pi+1, partner: namen[partner],
+        gegner: namen[b0] + ' / ' + namen[b1],
+        gewonnen: teamAGewonnen,
+        sW: r.sA, sL: r.sB, spW: r.spA, spL: r.spB
+      });
     });
-    [b0,b1].forEach(function(idx){
-      var par=idx===b0?b1:b0;
-      if(wB)st[idx].wins++;else if(wA)st[idx].losses++;
-      st[idx].sW+=r.sB;st[idx].sL+=r.sA;
-      st[idx].gW+=r.gB;st[idx].gL+=r.gA;
-      st[idx].det.push({nr:mi+1,par:nm[par],
-        opp:nm[a0]+'/'+nm[a1],won:wB,
-        sW:r.sB,sL:r.sA,gW:r.gB,gL:r.gA});
+
+    pair.b.forEach(function(idx) {
+      var partner = idx === b0 ? b1 : b0;
+      if (teamBGewonnen) stats[idx].siege++; else if (teamAGewonnen) stats[idx].ndln++;
+      stats[idx].sW += r.sB; stats[idx].sL += r.sA;
+      stats[idx].spW += r.spB; stats[idx].spL += r.spA;
+      stats[idx].details.push({
+        nr: pi+1, partner: namen[partner],
+        gegner: namen[a0] + ' / ' + namen[a1],
+        gewonnen: teamBGewonnen,
+        sW: r.sB, sL: r.sA, spW: r.spB, spL: r.spA
+      });
     });
   });
 
-  // Anzeige
-  document.getElementById('ehint').style.display=any?'none':'';
-  document.getElementById('ebody').style.display=any?'':'none';
-  if(!any)return;
+  // Anzeige ein/ausblenden
+  document.getElementById('leer-hinweis').style.display = irgendwasGespielt ? 'none' : '';
+  document.getElementById('ergebnis-inhalt').style.display = irgendwasGespielt ? '' : 'none';
+  if (!irgendwasGespielt) return;
 
-  // Sortieren: Siege > Satzdiff > Spielediff
-  var rk=[0,1,2,3].map(function(i){return Object.assign({i:i},st[i]);});
-  rk.sort(function(a,b){
-    if(b.wins!==a.wins)return b.wins-a.wins;
-    var d=(b.sW-b.sL)-(a.sW-a.sL);if(d!==0)return d;
-    return(b.gW-b.gL)-(a.gW-a.gL);
+  // Sortierung: Siege > Satzdiff > Spielediff
+  var sortiert = [0,1,2,3].map(function(i) { return Object.assign({i:i}, stats[i]); });
+  sortiert.sort(function(a, b) {
+    if (b.siege !== a.siege) return b.siege - a.siege;
+    var sd = (b.sW - b.sL) - (a.sW - a.sL);
+    if (sd !== 0) return sd;
+    return (b.spW - b.spL) - (a.spW - a.spL);
   });
 
-  // Spieler-Karten
-  var pr=document.getElementById('presults');
-  pr.innerHTML='';
-  rk.forEach(function(s,pos){
-    var vc=s.wins>s.losses?'g':'gr';
-    var dh=s.det.map(function(d){
-      return'<div class="kdet">'
-        +'<span class="kdnr">Sp.'+d.nr+'</span>'
-        +'<span>mit '+d.par+' vs '+d.opp+'</span>'
-        +'<span class="kdres '+(d.won?'gc':'lc')+'">'+(d.won?'Sieg':'Nied.')+'</span>'
-        +'</div>';
+  // Spielerkarten aufbauen
+  var kartenContainer = document.getElementById('spieler-karten');
+  kartenContainer.innerHTML = '';
+  sortiert.forEach(function(s, pos) {
+    var siegFarbe = s.siege > s.ndln ? 'gruen' : 'grau';
+    var detailsHTML = s.details.map(function(d) {
+      return '<div class="sk-detail">' +
+        '<span class="sk-detail-nr">Sp.' + d.nr + '</span>' +
+        '<span>mit ' + d.partner + ' vs ' + d.gegner + '</span>' +
+        '<span class="sk-detail-res ' + (d.gewonnen ? 'sieg-farbe' : 'nied-farbe') + '">' +
+        (d.gewonnen ? 'Sieg' : 'Nied.') + '</span>' +
+        '</div>';
     }).join('');
-    pr.innerHTML+=
-      '<div class="pkarte">'
-        +'<div class="ktop">'
-          +'<span class="rkb '+BC[pos]+'">'+(pos+1)+'</span>'
-          +'<span class="kname">'+s.name+'</span>'
-        +'</div>'
-        +'<div class="kstats">'
-          +'<div class="kstat"><div class="kstlbl">Siege</div><div class="kstval '+vc+'">'+s.wins+':'+s.losses+'</div></div>'
-          +'<div class="kstat"><div class="kstlbl">Sätze</div><div class="kstval">'+s.sW+':'+s.sL+'</div></div>'
-          +'<div class="kstat"><div class="kstlbl">Spiele</div><div class="kstval">'+s.gW+':'+s.gL+'</div></div>'
-        +'</div>'
-        +'<div class="kdets">'+dh+'</div>'
-      +'</div>';
+
+    kartenContainer.innerHTML +=
+      '<div class="spieler-karte">' +
+        '<div class="sk-kopf">' +
+          '<span class="rang-nr ' + RANG_KLASSEN[pos] + '">' + (pos+1) + '</span>' +
+          '<span class="sk-name">' + s.name + '</span>' +
+        '</div>' +
+        '<div class="sk-werte">' +
+          '<div class="sk-wert"><div class="sk-label">Siege</div><div class="sk-zahl ' + siegFarbe + '">' + s.siege + ':' + s.ndln + '</div></div>' +
+          '<div class="sk-wert"><div class="sk-label">Sätze</div><div class="sk-zahl">' + s.sW + ':' + s.sL + '</div></div>' +
+          '<div class="sk-wert"><div class="sk-label">Spiele</div><div class="sk-zahl">' + s.spW + ':' + s.spL + '</div></div>' +
+        '</div>' +
+        '<div class="sk-details">' + detailsHTML + '</div>' +
+      '</div>';
   });
 
-  // Rangliste
-  var rl=document.getElementById('rklist');
-  rl.innerHTML='';
-  var tags=[{t:'Aufsteiger',c:'tgu'},{t:'',c:''},{t:'',c:''},{t:'Absteiger',c:'tgd'}];
-  var pc=['r1','','','r4'];
-  rk.forEach(function(s,pos){
-    var t=tags[pos];
-    rl.innerHTML+=
-      '<div class="rki '+(pc[pos]||'')+'">'
-        +'<span class="rkb '+BC[pos]+'">'+(pos+1)+'</span>'
-        +'<span>'+s.name+'</span>'
-        +(t.t?'<span class="rktag '+t.c+'">'+t.t+'</span>':'')
-      +'</div>';
+  // Rangliste aufbauen
+  var rangContainer = document.getElementById('rangliste');
+  rangContainer.innerHTML = '';
+  var tags = [
+    {text:'Aufsteiger', cls:'tag-auf'},
+    {text:'', cls:''},
+    {text:'', cls:''},
+    {text:'Absteiger', cls:'tag-ab'}
+  ];
+  var platzKlassen = ['platz1','','','platz4'];
+
+  sortiert.forEach(function(s, pos) {
+    var t = tags[pos];
+    rangContainer.innerHTML +=
+      '<div class="rang-eintrag ' + (platzKlassen[pos] || '') + '">' +
+        '<span class="rang-nr ' + RANG_KLASSEN[pos] + '">' + (pos+1) + '</span>' +
+        '<span>' + s.name + '</span>' +
+        (t.text ? '<span class="rang-tag ' + t.cls + '">' + t.text + '</span>' : '') +
+      '</div>';
   });
 }
 
-function delAll(){
-  if(!confirm('Alle Eingaben löschen?'))return;
-  ['p1','p2','p3','p4','liga','datum'].forEach(function(id){
-    var el=document.getElementById(id);if(el)el.value='';
+// ---- LOESCHEN ----
+function allesLoeschen() {
+  if (!confirm('Alle Eingaben löschen?')) return;
+  ['p1','p2','p3','p4','liga','datum'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = '';
   });
-  for(var m=1;m<=3;m++){
-    for(var s=1;s<=3;s++){
-      ['a','b'].forEach(function(x){
-        var el=document.getElementById('m'+m+'s'+s+x);
-        if(el){el.value='';el.classList.remove('win');}
+  for (var m = 1; m <= 3; m++) {
+    for (var s = 1; s <= 3; s++) {
+      ['a','b'].forEach(function(seite) {
+        var el = document.getElementById('m' + m + 's' + s + seite);
+        if (el) { el.value = ''; el.classList.remove('sieger'); }
       });
     }
   }
-  upd();
-  go(0);
+  berechne();
+  zeige(0);
 }
 
-function druck(){
-  // Alle Panels kurz sichtbar machen fuer Print
-  for(var x=0;x<5;x++){document.getElementById('p'+x).style.display='block';}
+// ---- DRUCKEN ----
+function drucken() {
+  // Alle Seiten sichtbar fuer Druck
+  for (var i = 0; i < 5; i++) {
+    document.getElementById('s' + i).style.display = 'block';
+  }
   window.print();
-  // Danach wieder Tab-State herstellen
-  setTimeout(function(){
-    for(var x=0;x<5;x++){
-      var el=document.getElementById('p'+x);
-      el.style.display='';
-      el.className=el.className.indexOf('on')>=0?'pnl on':'pnl';
+  // Danach Tab-Zustand wiederherstellen
+  setTimeout(function() {
+    for (var i = 0; i < 5; i++) {
+      document.getElementById('s' + i).style.display = '';
     }
-  },500);
+    // Aktiven Tab wieder korrekt setzen
+    var aktiv = document.querySelector('.seite.aktiv');
+    if (!aktiv) zeige(0);
+  }, 1000);
 }
 
-// Service Worker
-if('serviceWorker' in navigator){
-  window.addEventListener('load',function(){
-    navigator.serviceWorker.register('sw.js').catch(function(e){console.log('SW:',e);});
-  });
-}
-
-// Init
-try{document.getElementById('datum').valueAsDate=new Date();}catch(e){}
-upd();
+// ---- START ----
+try { document.getElementById('datum').valueAsDate = new Date(); } catch(e) {}
+berechne();
 </script>
 </body>
 </html>
