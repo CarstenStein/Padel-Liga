@@ -7,50 +7,58 @@
 </head>
 <body style="font-family:Arial,sans-serif;background:#eef2f7;padding:0;margin:0;">
 
-<!-- LOGIN -->
 <div id="loginbox" style="padding:30px 16px;">
-  <div style="max-width:460px;margin:0 auto;background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.1);">
+<div style="max-width:460px;margin:0 auto;background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.1);">
 
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
-      <img src="data:image/jpeg;base64,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" style="width:48px;height:48px;border-radius:50%;" alt="">
-      <div>
-        <div style="font-size:18px;font-weight:bold;color:#1a4a7a;">Padel Liga</div>
-        <div style="font-size:12px;color:#888;">Administration &middot; Tennis Club Lilienthal</div>
-      </div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+    <img src="data:image/jpeg;base64,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" style="width:48px;height:48px;border-radius:50%;" alt="">
+    <div>
+      <div style="font-size:18px;font-weight:bold;color:#1a4a7a;">Padel Liga</div>
+      <div style="font-size:12px;color:#888;">Administration</div>
     </div>
-
-    <div style="font-size:13px;font-weight:bold;color:#1a4a7a;border-bottom:2px solid #ddeaf5;padding-bottom:6px;margin-bottom:12px;">1. SUPABASE-VERBINDUNG</div>
-
-    <div id="cfg-info" style="background:#fff3cd;border-left:4px solid #f5c800;padding:10px;border-radius:0 6px 6px 0;margin-bottom:12px;font-size:13px;color:#856404;">
-      URL und API Key eintragen, dann auf Speichern klicken.
-    </div>
-
-    <div style="font-size:12px;font-weight:bold;color:#333;margin-bottom:4px;">SUPABASE URL (nur bis .supabase.co)</div>
-    <input id="f-url" type="text" style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin-bottom:12px;display:block;font-family:Arial;">
-
-    <div style="font-size:12px;font-weight:bold;color:#333;margin-bottom:4px;">API KEY (beginnt mit sb_pu...)</div>
-    <input id="f-key" type="text" style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin-bottom:14px;display:block;font-family:Arial;">
-
-    <button id="btn-cfg" type="button"
-      style="width:100%;padding:13px;background:#2e7ab8;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;margin-bottom:20px;display:block;font-family:Arial;">
-      Verbindung speichern
-    </button>
-
-    <div style="font-size:13px;font-weight:bold;color:#1a4a7a;border-bottom:2px solid #ddeaf5;padding-bottom:6px;margin-bottom:12px;">2. ANMELDEN</div>
-
-    <div id="login-err" style="background:#fdecea;border-left:4px solid #dc3545;padding:10px;border-radius:0 6px 6px 0;margin-bottom:12px;font-size:13px;color:#721c24;display:none;"></div>
-
-    <div style="font-size:12px;font-weight:bold;color:#333;margin-bottom:4px;">E-MAIL</div>
-    <input id="f-email" type="text" style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin-bottom:12px;display:block;font-family:Arial;">
-
-    <div style="font-size:12px;font-weight:bold;color:#333;margin-bottom:4px;">PASSWORT</div>
-    <input id="f-pw" type="password" style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin-bottom:14px;display:block;font-family:Arial;">
-
-    <button id="btn-login" type="button"
-      style="width:100%;padding:13px;background:#1a4a7a;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;display:block;font-family:Arial;">
-      Anmelden
-    </button>
   </div>
+
+  <div id="js-status" style="background:#fdecea;padding:8px 12px;border-radius:6px;font-size:13px;color:#721c24;margin-bottom:16px;">
+    ⚠️ JavaScript noch nicht geladen
+  </div>
+
+  <div style="font-weight:bold;color:#1a4a7a;border-bottom:2px solid #ddeaf5;padding-bottom:6px;margin-bottom:12px;">1. Supabase-Verbindung</div>
+
+  <div id="cfg-status" style="background:#fff3cd;border-left:4px solid #f5c800;padding:10px;border-radius:0 6px 6px 0;margin-bottom:12px;font-size:13px;color:#856404;">
+    URL und Key eintragen
+  </div>
+
+  <label style="font-size:12px;font-weight:bold;color:#333;">SUPABASE URL</label><br>
+  <input id="u" type="text" placeholder="https://xxxxxx.supabase.co"
+    style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin:4px 0 10px;font-family:Arial;"><br>
+
+  <label style="font-size:12px;font-weight:bold;color:#333;">API KEY</label><br>
+  <input id="k" type="text" placeholder="sb_pu..."
+    style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin:4px 0 14px;font-family:Arial;"><br>
+
+  <button id="b1" type="button"
+    style="width:100%;padding:13px;background:#2e7ab8;color:#fff;border:3px solid #1a5a9a;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;margin-bottom:20px;font-family:Arial;">
+    Verbindung speichern
+  </button>
+
+  <div style="font-weight:bold;color:#1a4a7a;border-bottom:2px solid #ddeaf5;padding-bottom:6px;margin-bottom:12px;">2. Anmelden</div>
+
+  <div id="err" style="background:#fdecea;border-left:4px solid #dc3545;padding:10px;border-radius:0 6px 6px 0;margin-bottom:12px;font-size:13px;color:#721c24;display:none;"></div>
+
+  <label style="font-size:12px;font-weight:bold;color:#333;">E-MAIL</label><br>
+  <input id="e" type="text" placeholder="deine@email.de"
+    style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin:4px 0 10px;font-family:Arial;"><br>
+
+  <label style="font-size:12px;font-weight:bold;color:#333;">PASSWORT</label><br>
+  <input id="p" type="password" placeholder="Passwort"
+    style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin:4px 0 14px;font-family:Arial;"><br>
+
+  <button id="b2" type="button"
+    style="width:100%;padding:13px;background:#1a4a7a;color:#fff;border:3px solid #0f3460;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;font-family:Arial;">
+    Anmelden
+  </button>
+
+</div>
 </div>
 
 <!-- APP -->
@@ -58,29 +66,23 @@
   <div style="background:#1a4a7a;padding:14px 24px;display:flex;align-items:center;gap:12px;">
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAB3AHwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD46ooor9jPxoKKKKACilRGldURS7scKqjJJ9BX0L8LP2Dfi98UYobtdBXwzpkoBW88QObbcPURAGU8dDswfWsKtanQXNVkkvM2pUKteXLSi2/I+eaK/Rfwr/wSesUiR/EnxBuJpD96HStPWML9Hd2z/wB8iu1j/wCCVvwrEYEniPxgz92W7tQPy+zH+deVLOsHF2Um/kz145LjZK7il80flnRX6WeIP+CUPhW4ib+w/HesWEn8J1C1iuh+Ozyq8G+JH/BNP4q+DYpbrQm07xlZoCdlhL5NzgdzFJgH6KzH2ralmuDquynZ+en/AADCrlOMpK7hdeWv/BPkyitDX/Duq+FdVn0zWtNu9J1GA7ZbS9haGVD7qwBFZ9eqmmro8lpp2YUUUUwCiiigAooooAK9N+A/7PPi79obxT/ZPhq0C2sJDX2qXAK21mh7u3djzhBknB7AkH7PPwH1v9ob4i2nhrSc29qo8/UNRZdyWduCNzn1Y9FXuSOgyR+z3wt+Fvh34OeC7Hwx4YsVstNtV5JwZJ5CBulkb+J2xyfoBgAAeDmeZrBr2dPWb/A97LMseNftKmkF+J5t+z9+xx4A+AFrBc2diuu+J1UeZr2oxhpQ3fyV5EI6/d+bHBZq92oor8/q1alaXPUd2foNKjToR5Kasgoorz341X3xNsPDtnJ8LdO0DUtaN0BcxeIWkWEQbGyV2Oh3btnU4wTShD2klG6V++xc5ckXK1/Q9Cor81fiX/wUH+Pnwh8X3nhnxV4O8Habq9qFZovsty6sjDKurLdEMpHcH1BwQRXc/Bn9qD9qP48aRNq/hbwJ4IfR4pTCb+9iuIInkHVU3XWWxnkgEDpnNexLJ8RCn7WUoqPfmVjyY5rQnP2cVJy7Wdz62+LHwQ8FfG3Q20zxfodvqahSIbrGy5tj6xyj5l55xnB7givy6/ao/Yh8Sfs+vNrmlyS+I/BDPgagqfv7PJ4W4UcAdhIPlJ6hSQK/WjwfLrc/hTR5PEsNpb+IXtIm1GKwJNulxtHmCPJJ2Bs4yScd60b6xttTsrizvLeK7tLiNopoJ0DpIjDDKyngggkEGscHmFbAzsnePbp8i8Zl1HHQu1aXfr8z+e6ivq39uT9kNvgTr6+KPDEDyeBdUmKiPljps5yfJJ7xnnYx9Cp5ALfKVfouHrwxNNVab0Z+cYihUw1R0qi1QUUUV0HOFKiNK6oil3Y4VVGST6Ckr6G/YN+FkfxR/aN0FbuETaZoatrV0rDIbyioiB7HMrRZHcA1hWqqhTlVlslc2oUnXqxpR3bsfo5+xx+z9B8APhDY2dzAq+J9WVL7WJSPmEpHyw59I1O3HTdvP8Ve7VDeXC2lpPO33YkZz9AM1+OX7L/7F/iX9pu11HWU1WDw54etZvs7ajcQGd558BmWOMMudoYEksB8wAzzj8+oYeOP9ricRV5ErXdr738/I/R6tZ4FUsPh6fNe+l7bW8vM/ZOivyy+Pf8AwTmT4IfCLxB42/4WAdabSkhb7D/Y3kCXfNHF9/z224356HpivCP2YvgMP2jPiaPCLa2fD4NlLefbBafafuFfl2b067uue1d9PJ8NWoyxEMReMd3yP/O5x1M1r0qsaM6FpPZcy/ysfuJRX5ueKv8Agk3rFjo9xP4e+IVrq+pIhaOzvdLNokpHbzBNJgn3XHuK6r/glZZXugyfFzQdSt5LPUNNvbGK5tpRhopR9pR1PuDGR+FcVXL8OsPOvQr8/La65Wt3bq/0Ounjq7rwo1qPLzX1vfZX6I8b/wCCpESx/tG6ayjBfw7bM3ufPuB/ICvsz/gnfGqfsl+ECqgF5r4sR3P2yYfyAr41/wCCpf8AycXpP/Yt23/pRc19l/8ABPH/AJNK8G/9db7/ANLJq9fH/wDImoeq/Jnl4L/ka1vR/mj6Qooor4s+tMDx74H0j4k+DtX8Ma7bC70nU7dreePuAejKezKQGB7EA9q/Db4v/DLUvg78Sde8H6r811plwY1m24E8R+aOUD0ZCre2cdq/eivzz/4Kq/CyNV8JfEO1hCuzNot+6j73DSwE/lMCT/sivpMjxTpV/YvaX5nzWeYVVaHtlvH8v6/U/POiiivvz8/Cv0X/AOCT3hVE0r4g+JHQGSWe106J8fdCq8jj8d8f/fIr86K/Uz/glbGg+APiOQD528TzqT7C1tcfzNeHnUnHByS6tfme7ksVLGxb6J/kfYepWK6np11Zu7RpcRPEzp95QwIyM9+a434JfB7RvgR8O7DwdoU91d2FpJLKLi+ZGmkaSRnJYqqjjOBgDgCu7or88VSSg6aej1+7/hz9FcIuSm1qtD5//b2/5NK8f/8AXK0/9LIK+E/+CZP/ACcyv/YFu/5x192ft7f8mleP/wDrlaf+lkFfC/7A3hfxt4X+Ilx440rw5bahZw2L2oj1O/Nir+dtZXUiKViuFPITB7Hg17yzPBZVkWIxGPrRpwu1eTSV2opLXqfNYulUq5rRVOLbsnor9WfrRX59fFD9qT4efsu/Fb4jX3w7W58Z+MvFFxE+qrPOg0qwni38IyKHkbMjblDYycbgQRWx+1j+1x40tfhHr+j6X4SvfDWq/bhpWo61Z3i3VtaxNGrkRyAJIrOskYDNGow52ndjHk3/AATU/Z5sPiF4t1Lx/r9ol5pfh6VINPt5l3RyXpG7eQeD5alSAf4nU/w1nk31PEYGeY+1VSk7JKMk09mrtfJ236vQ1x2IqzxMMJQjae92tt07J/M8A/aV8efEL4leOrDxB8SNK/sbV7rTIms7YWjWo+x+ZIY2CMS2CxkwWOSPbFe+/s8fEz9o34QfBHRfEHhjw3aeLvhhG1w8dr5CSywKJ384kRFZh84kO4h1A68cVmf8FSiD+0ZpQB6eHLYH/wACLmvsv/gnj/yaV4N/6633/pZNX0uMxUIZbSq+yi4tr3XstHt2fmeRhMPKWYVaftGmk9er1W/l5Hz9p3/BQ/Wvi/8AGz4TaL4esbjwlpN1qkNrrVtJLHcfbGmkRAgYoCEXnBG0kv0GBn9Ea/OX9sD4EWPwi/aV+GnxJ8P2qWWj6z4is2voIV2xw3qTpIWA6ASKC2B/EjnvX2H+038cbD4A/CPWPEc88Y1Z42ttJtXI3T3bAhMDuq/fb/ZU+1fPY6jRrLD/AFONlNNW63v19PyPcwdWrS9v9bldxa18rdPX8z1evBP26vCqeK/2W/G8ZQNNYwRajE39wwyo7H/vgOPxrqv2Yl8TN8BvBt14w1S51fxFfWK3tzc3ePMxKTJGhwByqMinPOQc1b/aQjSX9nr4nK4yB4Y1JufUWshH6gV5VJOhiopO/LL8mejVar4WTatzRf4o/C2iiiv1Y/Jwr9LP+CUPiBLj4f8AjvQ9w8yz1SG9K+00WzP/AJANfmnX1n/wTT+JCeDf2gG0K6lEdn4msXs13HA+0J+9iJ+oWRR7uK8nNaTq4OaW61+7/gHrZTVVLGQb2en3/wDBP1looor8yP088f8A2r9KtvEXwaudDvUL2Wr6tpNhPzjEb6hbhufcZA9yK8++FltFJF4i1NY0he51e5tFgjUKsENo5tIkUDoCsO//ALantiui/bv8QN4Z/Zd8WXsNyLW+SawNm4IDect7A6lfUjYW/wCAmvmH4T/tP6H4uZr2y12y8LeJL4LJqmhazbSPZXM6oA1xbSoQYyyqNwOc7fu5y7fjXifw5m2cZdSr4KMpU1eLspS5XeMtVFNpTtH3rWi6aUmlK5rgcdhsNjHCq0pNJq9lf4lu+q10682l7HtvxL8Nafda9o5ngWW28RyPoOq2h+7eW7W80iEj+/GyZDdQrP7Ywv2a73xX8GP2RvDNz4E8DN8QdU1HWb83VrFfJabUWeaITFmBB4gjGP8Aa9q8c+OP7TVl4PSeSLWI/EHjb7M8OmwWFnJb2GkiVdrXG6QkzSlThWHABIAUFt31L/wT71iLVv2T/Bqo4aW0a8tphn7rC6lYD/vllP416/hjkea5Jk9SvmMGqc3TSUlKPM4+1bdnyysoyhFSaV+WyvCMW+TMMVh8ZjuShL3kpO6s7X5PVX0btra+urZ8TftAfBD9on9oT4kXXi7V/hlcWEjwx20FnbXEJSCFM7V3GTLHJYk8ZJPAHFdF8JtB/bE+CvhdPDnhfw1dQaKkrzR2tzDZTCNmOW2szbgCecZxkn1NfqFRX7k87nKmqMqMHFbJpv8AU8ZZPBVHVVWSk+t1/kfmr41n/bG+IWmQ6fr3ge11C1guEuokn03T3EcyZ2SKGYgMMnB964u5/Zp/aL+O3xU8O3PxR0rV7vT3vIYru9vLiARWlqXHmmOONgqfKCcIoycV+r1FTDOp0l+6pQi+6W1/mOWUQqP95VlL1f8AwBkMKW8SRRIscaKFVFGAoHAAFeOftkeIE8Nfsw/EW7dtol0xrIe5nZYQP/IlezV8Qf8ABU34kJo3wz8OeC4JQLvWr77ZOgPIt4BwCP8AakdCP+uZrzMBSdbFU4Lv+Wp34+qqOFqTfb89EfmNRRRX6oflIVoeHdfvvCuv6brWmTta6jp1zHd20y9UkRgyn8CBWfRSaTVmCbTuj93fgh8WNN+Nvww0PxfpjKq30I+0W6nJtrheJYj/ALrA4z1GD0Nd3X4//sQ/tUN+z742k0rXJpG8Ea1Iq3oGW+xzdFuVHoBgOByVweSoFfrzY31tqdlb3lncRXVpcRrLDPC4dJEYZVlYcEEEEEV+ZZjgpYOs19l7f5fI/UMuxscbRT+0t/8AP5nyV4u/4J1aX48kB8Q/FTxzrUaSGSKLUb1LhIif7odTj04rCsv+CWHgrTbuG6tPHPii1uoWDxzwNAjow6FWCZB9xX2zRQs1xsVyqpp8v8inluEk7uGvz/zPy7/bb/Yw1L4ZeFLPx1p/ibxB44jhk+zatca7P9ont4jgQuGxnYG3Kc9Cy9s1o/8ABM79onTvBmral8NfEN4llaaxcC70meZtqC6KhHhJPALhU29BuUjqwr9KtS0201nT7mwv7aK8srqJoZ7edA8cqMMMrKeCCCQQa/Oj9oP/AIJi6pb6ndaz8KLqG7sZGMn/AAj2oT+XNCeu2GZvlZfQOVIH8TV7mFzCljcM8HjpWfSX9dvyPHxOBq4SusXg43XVf13/ADP0gor8vvBfxN/bE+C1vHoz+EvEHiWytwEih1PRpdSCAcYE8PzkemXIAHGK9EtfHf7Z3xoiGnWfhqx+HtrP8kupSWf2Fo1PBP795JR9Y03DtivMnlE4O/tYcvfmPQhmkJq3s5c3ax7R+03+0vqnhPxLofwx+GK2+r/FHW7mJBGyiWLToc7meYdASoJwfupuc4+XP0fZLcJZwLdvHLdCNRM8KFEZ8fMVUkkDOcAk49TXhX7Mv7Jmjfs/xXms31/J4o8eaoCdQ1+7yW+Y7mSLcSQpPJYks5GTxgD3uuDFSoLlpUNUt5dW/wDLsjuw0azvUraN7Lol/n3ZFdXUNjazXNzKkFvChkklkYKqKBksSegAGc1+Jn7WHxtb49fGrWvEUDudGgIsNKRsjFrGTtbB6F2LSEdi+O1fW/8AwUR/a2ht7G8+FHhC9EtzN+78QX0DZESf8+ikfxH/AJaeg+XqWA/OivqskwLpReIqLV7enf5nyWeY5VZLDU3ot/Xt8v62Ciiivqj5QKKKKACvq39kP9uPVfgS0HhjxQs+t+BXf92qHdcaaSeWiz96PuY/xXByG+UqK56+Hp4mDp1VdHRQxFTDTVSk7M/fnwP498PfEnw7ba74Y1e11rSbgfJc2r7gD3Vh1Vh3VgCO4rfr8F/hl8X/ABj8Hdb/ALV8H69daLdHHmrC26KcDoskbZVx7MDjtX258LP+CqoWKG1+IfhJmcABtT8PuPm9zBIwx6kiT6LXxGKyOvSd6PvL8T7jC55Qqq1b3X+H9f1c/QyivBPCv7dXwR8VxIY/G9vpkx+9DqsEtsU9izLsP4Ma7WP9pD4TSxh1+J3g8A9m121U/kZM14ksNXg7Sg18me5HE0Jq8Zp/NHo1FeM+IP2yPgr4aiZ7v4i6POF7ae7XhP0EKvXg3xI/4Km+DNGilg8F+HNR8R3YBC3N+RZ2wPYgfM7fQqv1ralgMVWdoU3+X5mNXH4WirzqL77/AJH21dXUFjbS3NzNHb28KGSSaVgqIoGSxJ4AA7mvgP8Aa2/4KI21vbXvhD4UXn2i5cNDd+KIvuRDoVtf7zf9Neg/hySGHyR8bf2sPiP8eneDxFrRttGLbl0XTQYLQc5G5ckyEdi5YjtivH6+qwOSRpNVMQ7vt0+fc+Tx2eSqp08MrLv1+XYdLK88ryyu0kjsWZ3OSxPUk9zTaKK+qPlQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" style="width:40px;height:40px;border-radius:50%;" alt="">
     <div style="color:#fff;font-size:17px;font-weight:bold;">Padel Liga Administration</div>
-    <button id="btn-abm" type="button"
-      style="margin-left:auto;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-family:Arial;">
-      Abmelden
-    </button>
+    <button id="b3" type="button" style="margin-left:auto;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-family:Arial;">Abmelden</button>
   </div>
-
   <div style="background:#fff;border-bottom:2px solid #ddd;display:flex;">
-    <button id="n0" type="button" style="padding:12px 20px;font-size:14px;font-weight:bold;color:#1a4a7a;background:none;border:none;border-bottom:3px solid #f5c800;cursor:pointer;font-family:Arial;">Übersicht</button>
+    <button id="n0" type="button" style="padding:12px 20px;font-size:14px;font-weight:bold;color:#1a4a7a;background:none;border:none;border-bottom:3px solid #f5c800;cursor:pointer;font-family:Arial;">Uebersicht</button>
     <button id="n1" type="button" style="padding:12px 20px;font-size:14px;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-family:Arial;">Ligen</button>
     <button id="n2" type="button" style="padding:12px 20px;font-size:14px;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-family:Arial;">Spieltage</button>
   </div>
-
   <div style="padding:20px;max-width:900px;margin:0 auto;">
-
     <div id="v0">
       <div style="display:flex;gap:12px;margin-bottom:16px;">
         <div style="background:#fff;border-radius:10px;padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
           <div id="sl" style="font-size:28px;font-weight:bold;color:#1a4a7a;">-</div>
-          <div style="font-size:11px;color:#888;text-transform:uppercase;">Ligen</div>
+          <div style="font-size:11px;color:#888;">LIGEN</div>
         </div>
         <div style="background:#fff;border-radius:10px;padding:14px 18px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
           <div id="ss" style="font-size:28px;font-weight:bold;color:#1a4a7a;">-</div>
-          <div style="font-size:11px;color:#888;text-transform:uppercase;">Spieltage</div>
+          <div style="font-size:11px;color:#888;">SPIELTAGE</div>
         </div>
       </div>
       <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
@@ -91,19 +93,15 @@
             <th style="padding:8px;text-align:left;font-size:11px;color:#888;border-bottom:2px solid #eee;">Datum</th>
             <th style="padding:8px;text-align:left;font-size:11px;color:#888;border-bottom:2px solid #eee;">Eingetragen</th>
           </tr></thead>
-          <tbody id="tbl"></tbody>
+          <tbody id="tbl"><tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Laden...</td></tr></tbody>
         </table>
       </div>
     </div>
-
     <div id="v1" style="display:none;">
       <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
           <b style="color:#1a4a7a;">Alle Ligen</b>
-          <button id="btn-nl" type="button"
-            style="background:#1a4a7a;color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:13px;font-weight:bold;cursor:pointer;font-family:Arial;">
-            + Neue Liga
-          </button>
+          <button id="bnl" type="button" style="background:#1a4a7a;color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:13px;font-weight:bold;cursor:pointer;font-family:Arial;">+ Neue Liga</button>
         </div>
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead><tr style="background:#f9f9f9;">
@@ -111,18 +109,15 @@
             <th style="padding:8px;text-align:left;font-size:11px;color:#888;border-bottom:2px solid #eee;">Spieler</th>
             <th style="padding:8px;text-align:left;font-size:11px;color:#888;border-bottom:2px solid #eee;">Aktionen</th>
           </tr></thead>
-          <tbody id="tlg"></tbody>
+          <tbody id="tlg"><tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Laden...</td></tr></tbody>
         </table>
       </div>
     </div>
-
     <div id="v2" style="display:none;">
       <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
           <b style="color:#1a4a7a;">Alle Spieltage</b>
-          <select id="sf" style="border:1px solid #ccc;border-radius:6px;padding:6px 10px;font-size:13px;font-family:Arial;">
-            <option value="">Alle Ligen</option>
-          </select>
+          <select id="sf" style="border:1px solid #ccc;border-radius:6px;padding:6px 10px;font-size:13px;font-family:Arial;"><option value="">Alle Ligen</option></select>
         </div>
         <table style="width:100%;border-collapse:collapse;font-size:14px;">
           <thead><tr style="background:#f9f9f9;">
@@ -130,41 +125,28 @@
             <th style="padding:8px;text-align:left;font-size:11px;color:#888;border-bottom:2px solid #eee;">Datum</th>
             <th style="padding:8px;text-align:left;font-size:11px;color:#888;border-bottom:2px solid #eee;">Aktion</th>
           </tr></thead>
-          <tbody id="tst"></tbody>
+          <tbody id="tst"><tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Laden...</td></tr></tbody>
         </table>
       </div>
     </div>
-
   </div>
 </div>
 
 <!-- MODAL LIGA -->
 <div id="mdl" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;overflow-y:auto;">
   <div style="max-width:460px;margin:40px auto;background:#fff;border-radius:12px;padding:24px;">
-    <b id="mtitel" style="font-size:16px;color:#1a4a7a;display:block;margin-bottom:14px;">Liga</b>
-    <div style="font-size:12px;font-weight:bold;margin-bottom:4px;">LIGA-NAME</div>
-    <input id="mln" type="text" style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin-bottom:14px;display:block;font-family:Arial;">
+    <b id="mt" style="font-size:16px;color:#1a4a7a;display:block;margin-bottom:14px;">Liga</b>
+    <label style="font-size:12px;font-weight:bold;">LIGA-NAME</label><br>
+    <input id="mln" type="text" style="width:100%;padding:9px;border:2px solid #c8d8e8;border-radius:6px;font-size:15px;margin:4px 0 14px;font-family:Arial;display:block;"><br>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span style="width:24px;height:24px;border-radius:50%;background:#1a4a7a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">1</span>
-        <input id="ms1" type="text" placeholder="Spieler 1" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;">
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span style="width:24px;height:24px;border-radius:50%;background:#2e7ab8;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">2</span>
-        <input id="ms2" type="text" placeholder="Spieler 2" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;">
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span style="width:24px;height:24px;border-radius:50%;background:#5b9cc4;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">3</span>
-        <input id="ms3" type="text" placeholder="Spieler 3" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;">
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <span style="width:24px;height:24px;border-radius:50%;background:#b8860b;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">4</span>
-        <input id="ms4" type="text" placeholder="Spieler 4" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;">
-      </div>
+      <div style="display:flex;align-items:center;gap:6px;"><span style="width:24px;height:24px;border-radius:50%;background:#1a4a7a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">1</span><input id="ms1" type="text" placeholder="Spieler 1" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;"></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span style="width:24px;height:24px;border-radius:50%;background:#2e7ab8;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">2</span><input id="ms2" type="text" placeholder="Spieler 2" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;"></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span style="width:24px;height:24px;border-radius:50%;background:#5b9cc4;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">3</span><input id="ms3" type="text" placeholder="Spieler 3" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;"></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span style="width:24px;height:24px;border-radius:50%;background:#b8860b;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;">4</span><input id="ms4" type="text" placeholder="Spieler 4" style="flex:1;border:1px solid #ccc;border-radius:6px;padding:7px;font-size:14px;font-family:Arial;"></div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:8px;">
-      <button id="btn-mab" type="button" style="padding:8px 16px;border-radius:6px;border:none;background:#eee;cursor:pointer;font-size:14px;font-family:Arial;">Abbrechen</button>
-      <button id="btn-mok" type="button" style="padding:8px 16px;border-radius:6px;border:none;background:#1a4a7a;color:#fff;cursor:pointer;font-size:14px;font-weight:bold;font-family:Arial;">Speichern</button>
+      <button id="mab" type="button" style="padding:8px 16px;border-radius:6px;border:1px solid #ccc;background:#eee;cursor:pointer;font-size:14px;font-family:Arial;">Abbrechen</button>
+      <button id="mok" type="button" style="padding:8px 16px;border-radius:6px;border:none;background:#1a4a7a;color:#fff;cursor:pointer;font-size:14px;font-weight:bold;font-family:Arial;">Speichern</button>
     </div>
   </div>
 </div>
@@ -173,39 +155,40 @@
 var EID = null;
 var SES = null;
 
-function gc() { try { return JSON.parse(localStorage.getItem('pc') || '{}'); } catch(e) { return {}; } }
-function gs() { try { return JSON.parse(sessionStorage.getItem('ps') || 'null'); } catch(e) { return null; } }
+window.onerror = function(msg, src, line) {
+  document.getElementById('js-status').textContent = 'JS FEHLER Zeile ' + line + ': ' + msg;
+  document.getElementById('js-status').style.background = '#fdecea';
+  document.getElementById('js-status').style.color = '#721c24';
+};
 
-function getHdrs() {
-  var c = gc();
-  var s = SES || gs();
-  var t = (s && s.access_token) ? s.access_token : c.key;
-  return { 'Content-Type': 'application/json', 'apikey': c.key, 'Authorization': 'Bearer ' + t };
+document.getElementById('js-status').textContent = 'JavaScript aktiv';
+document.getElementById('js-status').style.background = '#d4edda';
+document.getElementById('js-status').style.color = '#155724';
+
+function gc() {
+  try { return JSON.parse(localStorage.getItem('pc') || '{}'); } catch(e) { return {}; }
 }
 
 function api(path, method, body, prefer, cb) {
   var c = gc();
   if (!c.url || !c.key) { if (cb) cb(null); return; }
-  var h = getHdrs();
+  var s = SES;
+  var token = (s && s.access_token) ? s.access_token : c.key;
+  var h = { 'Content-Type': 'application/json', 'apikey': c.key, 'Authorization': 'Bearer ' + token };
   if (prefer) h['Prefer'] = prefer;
   fetch(c.url + '/rest/v1/' + path, {
-    method: method || 'GET',
-    headers: h,
+    method: method || 'GET', headers: h,
     body: body ? JSON.stringify(body) : undefined
-  }).then(function(r) {
-    return r.text();
-  }).then(function(t) {
-    try { if (cb) cb(JSON.parse(t)); } catch(e) { if (cb) cb([]); }
-  }).catch(function() { if (cb) cb(null); });
+  }).then(function(r) { return r.text(); })
+    .then(function(t) { try { if (cb) cb(JSON.parse(t)); } catch(x) { if (cb) cb([]); } })
+    .catch(function() { if (cb) cb(null); });
 }
 
 function nav(n) {
-  var views = ['v0', 'v1', 'v2'];
-  var btns = ['n0', 'n1', 'n2'];
-  views.forEach(function(id, i) {
+  ['v0','v1','v2'].forEach(function(id, i) {
     document.getElementById(id).style.display = (i === n) ? 'block' : 'none';
   });
-  btns.forEach(function(id, i) {
+  ['n0','n1','n2'].forEach(function(id, i) {
     var el = document.getElementById(id);
     el.style.fontWeight = (i === n) ? 'bold' : 'normal';
     el.style.color = (i === n) ? '#1a4a7a' : '#888';
@@ -224,19 +207,12 @@ function ladeUe() {
     if (!d) return;
     document.getElementById('ss').textContent = d.length;
     var tb = document.getElementById('tbl');
-    if (!d.length) {
-      tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Noch keine Spieltage</td></tr>';
-      return;
-    }
+    if (!d.length) { tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Noch keine Spieltage</td></tr>'; return; }
     tb.innerHTML = d.slice(0, 8).map(function(s) {
       var lig = (s.ligen && s.ligen.name) ? s.ligen.name : '-';
-      var dat = new Date(s.datum).toLocaleDateString('de-DE');
-      var ts = new Date(s.gespeichert_am).toLocaleString('de-DE');
-      return '<tr>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lig + '</b></td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + dat + '</td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;font-size:12px;color:#999;">' + ts + '</td>' +
-      '</tr>';
+      return '<tr><td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lig + '</b></td>' +
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + new Date(s.datum).toLocaleDateString('de-DE') + '</td>' +
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;font-size:12px;color:#999;">' + new Date(s.gespeichert_am).toLocaleString('de-DE') + '</td></tr>';
     }).join('');
   });
 }
@@ -244,23 +220,20 @@ function ladeUe() {
 function ladeLg() {
   api('ligen?select=id,name,spieler(position,name),spieltage(id)&order=name.asc', null, null, null, function(d) {
     var tb = document.getElementById('tlg');
-    if (!d || !d.length) {
-      tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Noch keine Ligen. Lege die erste an!</td></tr>';
-      return;
-    }
+    if (!d || !d.length) { tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Noch keine Ligen</td></tr>'; return; }
     tb.innerHTML = d.map(function(l) {
-      var sp = [1,2,3,4].map(function(p) {
-        var x = (l.spieler || []).find(function(s) { return s.position === p; });
+      var sp = [1,2,3,4].map(function(pos) {
+        var x = (l.spieler || []).find(function(s) { return s.position === pos; });
         return (x && x.name) ? x.name : '-';
       }).join(', ');
-      var lid = l.id.toString();
-      var lnm = l.name.replace(/[^a-zA-Z0-9 ]/g, "");
+      var lid = l.id;
+      var lnm = l.name;
       return '<tr>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + l.name + '</b><br><small style="color:#888;">' + sp + '</small></td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + (l.spieltage ? l.spieltage.length : 0) + ' Spieltage</td>' +
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lnm + '</b><br><small style="color:#888;">' + sp + '</small></td>' +
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + (l.spieltage ? l.spieltage.length : 0) + '</td>' +
         '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' +
-          '<button type="button" onclick="lgEdit('' + lid + '')" style="padding:4px 8px;border:none;border-radius:4px;background:#eef2f7;cursor:pointer;margin-right:4px;font-size:12px;font-family:Arial;">Bearbeiten</button>' +
-          '<button type="button" onclick="lgDel('' + lid + '','' + lnm + '')" style="padding:4px 8px;border:none;border-radius:4px;background:#fdecea;color:#c0392b;cursor:pointer;font-size:12px;font-family:Arial;">Loeschen</button>' +
+          '<button type="button" onclick="lgEdit('' + lid + '')" style="padding:4px 8px;border:none;background:#eef2f7;border-radius:4px;cursor:pointer;margin-right:4px;font-size:12px;">Bearb.</button>' +
+          '<button type="button" onclick="lgDel('' + lid + '')" style="padding:4px 8px;border:none;background:#fdecea;color:#c0392b;border-radius:4px;cursor:pointer;font-size:12px;">Del</button>' +
         '</td></tr>';
     }).join('');
   });
@@ -268,7 +241,7 @@ function ladeLg() {
 
 function lgNeu() {
   EID = null;
-  document.getElementById('mtitel').textContent = 'Neue Liga anlegen';
+  document.getElementById('mt').textContent = 'Neue Liga';
   document.getElementById('mln').value = '';
   document.getElementById('ms1').value = '';
   document.getElementById('ms2').value = '';
@@ -279,54 +252,41 @@ function lgNeu() {
 
 function lgEdit(id) {
   EID = id;
-  document.getElementById('mtitel').textContent = 'Liga bearbeiten';
+  document.getElementById('mt').textContent = 'Liga bearbeiten';
   api('ligen?id=eq.' + id + '&select=id,name,spieler(position,name)', null, null, null, function(d) {
     if (!d || !d.length) return;
     document.getElementById('mln').value = d[0].name;
-    [1,2,3,4].forEach(function(p) {
-      var sp = (d[0].spieler || []).find(function(s) { return s.position === p; });
-      document.getElementById('ms' + p).value = sp ? sp.name : '';
+    [1,2,3,4].forEach(function(pos) {
+      var sp = (d[0].spieler || []).find(function(s) { return s.position === pos; });
+      document.getElementById('ms' + pos).value = sp ? sp.name : '';
     });
     document.getElementById('mdl').style.display = 'block';
   });
 }
 
-function lgDel(id, nm) {
-  if (!confirm('Liga "' + nm + '" wirklich loeschen?')) return;
+function lgDel(id) {
+  if (!confirm('Liga loeschen?')) return;
   api('ligen?id=eq.' + id, 'DELETE', null, null, function() { ladeLg(); ladeUe(); });
 }
 
 function lgSave() {
   var nm = document.getElementById('mln').value.trim();
-  if (!nm) { alert('Bitte Liga-Name eingeben'); return; }
-  var sp = [
-    document.getElementById('ms1').value.trim(),
-    document.getElementById('ms2').value.trim(),
-    document.getElementById('ms3').value.trim(),
-    document.getElementById('ms4').value.trim()
-  ];
+  if (!nm) { alert('Liga-Name eingeben'); return; }
+  var sp = [document.getElementById('ms1').value.trim(), document.getElementById('ms2').value.trim(), document.getElementById('ms3').value.trim(), document.getElementById('ms4').value.trim()];
   if (EID) {
     api('ligen?id=eq.' + EID, 'PATCH', { name: nm }, null, function() {
       var done = 0;
       for (var i = 0; i < 4; i++) {
-        (function(idx) {
-          api('spieler?liga_id=eq.' + EID + '&position=eq.' + (idx+1), 'PATCH', { name: sp[idx] }, null, function() {
-            if (++done === 4) { document.getElementById('mdl').style.display = 'none'; ladeLg(); }
-          });
-        })(i);
+        (function(idx) { api('spieler?liga_id=eq.' + EID + '&position=eq.' + (idx + 1), 'PATCH', { name: sp[idx] }, null, function() { if (++done === 4) { document.getElementById('mdl').style.display = 'none'; ladeLg(); } }); })(i);
       }
     });
   } else {
     api('ligen', 'POST', { name: nm }, 'return=representation', function(neu) {
-      if (!neu || !neu.length) { alert('Fehler beim Anlegen'); return; }
+      if (!neu || !neu.length) { alert('Fehler'); return; }
       var nid = neu[0].id;
       var done = 0;
       for (var i = 0; i < 4; i++) {
-        (function(idx) {
-          api('spieler?liga_id=eq.' + nid + '&position=eq.' + (idx+1), 'PATCH', { name: sp[idx] }, null, function() {
-            if (++done === 4) { document.getElementById('mdl').style.display = 'none'; ladeLg(); ladeUe(); }
-          });
-        })(i);
+        (function(idx) { api('spieler?liga_id=eq.' + nid + '&position=eq.' + (idx + 1), 'PATCH', { name: sp[idx] }, null, function() { if (++done === 4) { document.getElementById('mdl').style.display = 'none'; ladeLg(); ladeUe(); } }); })(i);
       }
     });
   }
@@ -337,73 +297,50 @@ function ladeSf() {
     var sel = document.getElementById('sf');
     var val = sel.value;
     sel.innerHTML = '<option value="">Alle Ligen</option>';
-    if (d) d.forEach(function(l) {
-      sel.innerHTML += '<option value="' + l.id + '"' + (l.id === val ? ' selected' : '') + '>' + l.name + '</option>';
-    });
+    if (d) d.forEach(function(l) { sel.innerHTML += '<option value="' + l.id + '"' + (l.id === val ? ' selected' : '') + '>' + l.name + '</option>'; });
   });
 }
 
 function ladeSt() {
   var f = document.getElementById('sf').value;
-  var q = 'spieltage?select=id,datum,gespeichert_am,ligen(name)&order=gespeichert_am.desc' + (f ? '&liga_id=eq.' + f : '');
-  api(q, null, null, null, function(d) {
+  api('spieltage?select=id,datum,gespeichert_am,ligen(name)&order=gespeichert_am.desc' + (f ? '&liga_id=eq.' + f : ''), null, null, null, function(d) {
     var tb = document.getElementById('tst');
-    if (!d || !d.length) {
-      tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Keine Spieltage</td></tr>';
-      return;
-    }
+    if (!d || !d.length) { tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Keine Spieltage</td></tr>'; return; }
     tb.innerHTML = d.map(function(s) {
       var lig = (s.ligen && s.ligen.name) ? s.ligen.name : '-';
-      var dat = new Date(s.datum).toLocaleDateString('de-DE');
-      var ts = new Date(s.gespeichert_am).toLocaleString('de-DE');
-      var sid = s.id.toString();
-      return '<tr>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lig + '</b></td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + dat + '</td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' +
-          '<button type="button" onclick="stDel('' + sid + '')" style="padding:4px 8px;border:none;border-radius:4px;background:#fdecea;color:#c0392b;cursor:pointer;font-size:12px;font-family:Arial;">Loeschen</button>' +
-        '</td></tr>';
+      return '<tr><td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lig + '</b></td>' +
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + new Date(s.datum).toLocaleDateString('de-DE') + '</td>' +
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><button type="button" onclick="stDel('' + s.id + '')" style="padding:4px 8px;border:none;background:#fdecea;color:#c0392b;border-radius:4px;cursor:pointer;font-size:12px;">Del</button></td></tr>';
     }).join('');
   });
 }
 
 function stDel(id) {
-  if (!confirm('Spieltag wirklich loeschen?')) return;
+  if (!confirm('Spieltag loeschen?')) return;
   api('spieltage?id=eq.' + id, 'DELETE', null, null, function() { ladeSt(); ladeUe(); });
 }
 
-// BUTTON HANDLER - alle hier unten, nach dem DOM
-document.getElementById('btn-cfg').onclick = function() {
-  var url = document.getElementById('f-url').value.trim();
-  var key = document.getElementById('f-key').value.trim();
-  // URL bereinigen
-  url = url.replace(/\/+$/, '');
-  url = url.replace('/rest/v1', '');
+// BUTTON HANDLER
+document.getElementById('b1').onclick = function() {
+  var url = document.getElementById('u').value.trim().replace(/\/+$/, '').replace('/rest/v1/', '').replace('/rest/v1', '');
+  var key = document.getElementById('k').value.trim();
   localStorage.setItem('pc', JSON.stringify({ url: url, key: key }));
-  var info = document.getElementById('cfg-info');
-  info.style.background = '#d4edda';
-  info.style.borderLeftColor = '#28a745';
-  info.style.color = '#155724';
-  info.textContent = 'Gespeichert! URL: ' + url;
+  var st = document.getElementById('cfg-status');
+  st.style.background = '#d4edda';
+  st.style.borderLeftColor = '#28a745';
+  st.style.color = '#155724';
+  st.textContent = 'Gespeichert! URL: ' + url;
 };
 
-document.getElementById('btn-login').onclick = function() {
+document.getElementById('b2').onclick = function() {
   var c = gc();
-  var email = document.getElementById('f-email').value.trim();
-  var pw = document.getElementById('f-pw').value;
-  var err = document.getElementById('login-err');
+  var email = document.getElementById('e').value.trim();
+  var pw = document.getElementById('p').value;
+  var err = document.getElementById('err');
   err.style.display = 'none';
-  if (!c.url || !c.key) {
-    err.textContent = 'Bitte zuerst oben Verbindung speichern!';
-    err.style.display = 'block';
-    return;
-  }
-  if (!email || !pw) {
-    err.textContent = 'E-Mail und Passwort eingeben.';
-    err.style.display = 'block';
-    return;
-  }
-  var btn = document.getElementById('btn-login');
+  if (!c.url || !c.key) { err.textContent = 'Bitte zuerst Verbindung speichern!'; err.style.display = 'block'; return; }
+  if (!email || !pw) { err.textContent = 'E-Mail und Passwort eingeben.'; err.style.display = 'block'; return; }
+  var btn = document.getElementById('b2');
   btn.textContent = 'Bitte warten...';
   btn.disabled = true;
   fetch(c.url + '/auth/v1/token?grant_type=password', {
@@ -411,13 +348,7 @@ document.getElementById('btn-login').onclick = function() {
     headers: { 'Content-Type': 'application/json', 'apikey': c.key },
     body: JSON.stringify({ email: email, password: pw })
   }).then(function(r) {
-    if (!r.ok) {
-      btn.textContent = 'Anmelden';
-      btn.disabled = false;
-      err.textContent = 'Anmeldung fehlgeschlagen. E-Mail oder Passwort pruefen.';
-      err.style.display = 'block';
-      return;
-    }
+    if (!r.ok) { btn.textContent = 'Anmelden'; btn.disabled = false; err.textContent = 'Anmeldung fehlgeschlagen.'; err.style.display = 'block'; return; }
     r.json().then(function(data) {
       SES = data;
       sessionStorage.setItem('ps', JSON.stringify(data));
@@ -425,50 +356,39 @@ document.getElementById('btn-login').onclick = function() {
       document.getElementById('appbox').style.display = 'block';
       ladeUe();
     });
-  }).catch(function(e) {
-    btn.textContent = 'Anmelden';
-    btn.disabled = false;
-    err.textContent = 'Verbindungsfehler: ' + e.message;
-    err.style.display = 'block';
-  });
+  }).catch(function(ex) { btn.textContent = 'Anmelden'; btn.disabled = false; err.textContent = 'Fehler: ' + ex.message; err.style.display = 'block'; });
 };
 
-document.getElementById('btn-abm').onclick = function() {
-  SES = null;
-  sessionStorage.removeItem('ps');
-  document.getElementById('loginbox').style.display = 'block';
-  document.getElementById('appbox').style.display = 'none';
-  document.getElementById('btn-login').textContent = 'Anmelden';
-  document.getElementById('btn-login').disabled = false;
-};
-
+document.getElementById('b3').onclick = function() { SES = null; sessionStorage.removeItem('ps'); document.getElementById('loginbox').style.display = 'block'; document.getElementById('appbox').style.display = 'none'; document.getElementById('b2').textContent = 'Anmelden'; document.getElementById('b2').disabled = false; };
 document.getElementById('n0').onclick = function() { nav(0); };
 document.getElementById('n1').onclick = function() { nav(1); };
 document.getElementById('n2').onclick = function() { nav(2); };
-document.getElementById('btn-nl').onclick = function() { lgNeu(); };
-document.getElementById('btn-mab').onclick = function() { document.getElementById('mdl').style.display = 'none'; };
-document.getElementById('btn-mok').onclick = function() { lgSave(); };
+document.getElementById('bnl').onclick = function() { lgNeu(); };
+document.getElementById('mab').onclick = function() { document.getElementById('mdl').style.display = 'none'; };
+document.getElementById('mok').onclick = function() { lgSave(); };
 document.getElementById('sf').onchange = function() { ladeSt(); };
 
-// Gespeicherte Konfiguration laden
+// Init
 (function() {
   var c = gc();
-  if (c.url) document.getElementById('f-url').value = c.url;
-  if (c.key) document.getElementById('f-key').value = c.key;
+  if (c.url) document.getElementById('u').value = c.url;
+  if (c.key) document.getElementById('k').value = c.key;
   if (c.url && c.key) {
-    var info = document.getElementById('cfg-info');
-    info.style.background = '#d4edda';
-    info.style.borderLeftColor = '#28a745';
-    info.style.color = '#155724';
-    info.textContent = 'Verbindung gespeichert.';
+    var st = document.getElementById('cfg-status');
+    st.style.background = '#d4edda';
+    st.style.borderLeftColor = '#28a745';
+    st.style.color = '#155724';
+    st.textContent = 'Verbindung gespeichert.';
   }
-  var s = gs();
-  if (s && s.access_token) {
-    SES = s;
-    document.getElementById('loginbox').style.display = 'none';
-    document.getElementById('appbox').style.display = 'block';
-    ladeUe();
-  }
+  try {
+    var s = JSON.parse(sessionStorage.getItem('ps') || 'null');
+    if (s && s.access_token) {
+      SES = s;
+      document.getElementById('loginbox').style.display = 'none';
+      document.getElementById('appbox').style.display = 'block';
+      ladeUe();
+    }
+  } catch(ex) {}
 })();
 </script>
 </body>
