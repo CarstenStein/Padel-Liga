@@ -143,16 +143,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
     </div>
 
-    <!-- Verbindungsstatus -->
-    <div id="config-ok-hint" style="background:#d4edda;border-radius:8px;padding:8px 14px;font-size:12px;color:#155724;margin-bottom:14px;display:none;font-weight:600;">
-      ✅ Supabase verbunden – bereit zum Anmelden
+    <div style="background:#fff3cd;border-left:4px solid #f5c800;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#856404;margin-bottom:18px;line-height:1.6;" id="config-missing-hint">
+      <b>⚠️ Schritt 1: Verbindung eintragen</b><br>Supabase URL und API Key eingeben und speichern.
     </div>
-    <div id="config-missing-hint" style="background:#fff3cd;border-left:3px solid #f5c800;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#856404;margin-bottom:14px;line-height:1.6;">
-      <b>⚠️ Verbindung noch nicht eingerichtet</b><br>
-      Bitte zuerst unten URL und API Key eintragen.
+    <div style="background:#d4edda;border-radius:8px;padding:8px 14px;font-size:12px;color:#155724;margin-bottom:18px;display:none;font-weight:600;" id="config-ok-hint">
+      ✅ Verbindung gespeichert – jetzt anmelden
     </div>
 
-    <!-- Login -->
+    <div style="background:#f0f6fc;border-radius:10px;padding:16px;margin-bottom:18px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#1a4a7a;margin-bottom:12px;">⚙️ Supabase-Verbindung</div>
+      <div class="f-row">
+        <label>Supabase URL</label>
+        <input type="text" id="cfg-url" placeholder="https://xxxxxx.supabase.co">
+      </div>
+      <div class="f-row" style="margin-bottom:10px;">
+        <label>API Key (Publishable key)</label>
+        <input type="text" id="cfg-key" placeholder="sb_pu...">
+      </div>
+      <button class="btn-primary" style="margin-top:0;" onclick="configSpeichernBtn()">Verbindung speichern</button>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#7a9ab8;margin-bottom:10px;">🔐 Schritt 2: Anmelden</div>
     <div class="f-row">
       <label>E-Mail</label>
       <input type="email" id="login-email" placeholder="deine@email.de" autocomplete="email">
@@ -163,35 +174,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         onkeydown="if(event.key==='Enter')anmelden()">
     </div>
     <button class="btn-primary" id="login-btn" onclick="anmelden()">Anmelden</button>
-    <div class="error-box" id="login-fehler">Anmeldung fehlgeschlagen. Bitte prüfe E-Mail, Passwort und Verbindungseinstellungen.</div>
-
-    <!-- Verbindung aufklappbar -->
-    <div style="margin-top:20px;border-top:2px solid #eef2f7;padding-top:16px;">
-      <div id="verb-toggle" onclick="verbindungToggle()" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0.1);padding:4px 0;">
-        <span style="font-size:14px;font-weight:700;color:#1a4a7a;">⚙️ Supabase-Verbindung einrichten</span>
-        <span id="toggle-icon" style="font-size:22px;font-weight:700;color:#1a4a7a;line-height:1;">+</span>
-      </div>
-      <div id="verbindung-panel" style="display:none;margin-top:14px;">
-        <div style="background:#f0f6fc;border-left:3px solid #1a4a7a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;color:#1a4a7a;line-height:1.7;margin-bottom:14px;">
-          <b>Wo findest du die Werte?</b><br>
-          <b>URL:</b> Supabase → dein Projekt → Integrations → Data API<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;→ nur den Teil bis <i>.supabase.co</i> kopieren<br>
-          <b>Key:</b> Supabase → Settings → API Keys → Publishable key (sb_pu...)
-        </div>
-        <div class="f-row">
-          <label>Supabase URL</label>
-          <input type="url" id="cfg-url" placeholder="https://xxxxxx.supabase.co" oninput="configSpeichern()">
-        </div>
-        <div class="f-row">
-          <label>API Key</label>
-          <input type="text" id="cfg-key" placeholder="sb_pu..." oninput="configSpeichern()">
-        </div>
-        <button class="btn-primary" onclick="configSpeichernUndSchliessen()">✅ Speichern</button>
-        <div id="cfg-saved" style="background:#d4edda;border-radius:8px;padding:8px 14px;font-size:13px;color:#155724;margin-top:10px;display:none;font-weight:600;">
-          ✅ Gespeichert! Jetzt oben anmelden.
-        </div>
-      </div>
-    </div>
+    <div class="error-box" id="login-fehler">Anmeldung fehlgeschlagen. Bitte E-Mail, Passwort und Verbindungseinstellungen prüfen.</div>
   </div>
   </div>
 </div>
@@ -334,12 +317,33 @@ function configSpeichern() {
 }
 function configLaden() {
   var c = getConfig();
-  if(c.url) document.getElementById('cfg-url').value = c.url;
-  if(c.key) document.getElementById('cfg-key').value = c.key;
+  var urlEl = document.getElementById('cfg-url');
+  var keyEl = document.getElementById('cfg-key');
+  if(urlEl && c.url) urlEl.value = c.url;
+  if(keyEl && c.key) keyEl.value = c.key;
   updateConfigStatus();
 }
 
 // ===== LOGIN TABS =====
+function configSpeichernBtn() {
+  var url = document.getElementById('cfg-url').value.trim().replace(/\/+$/, '');
+  var key = document.getElementById('cfg-key').value.trim();
+  if (!url || !key) { alert('Bitte beide Felder ausfüllen.'); return; }
+  localStorage.setItem('padel_cfg', JSON.stringify({url:url, key:key}));
+  updateConfigStatus();
+  document.getElementById('config-missing-hint').style.display = 'none';
+  document.getElementById('config-ok-hint').style.display = 'block';
+}
+
+function updateConfigStatus() {
+  var c = getConfig();
+  var ok = !!(c.url && c.key);
+  var miss = document.getElementById('config-missing-hint');
+  var ok_h = document.getElementById('config-ok-hint');
+  if(miss) miss.style.display = ok ? 'none' : 'block';
+  if(ok_h) ok_h.style.display = ok ? 'block' : 'none';
+}
+
 // ===== SUPABASE =====
 function getBaseUrl() {
   var c = getConfig();
