@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+</head>
+<body>
+<h2>Button-Test</h2>
+<p>Klicke auf den Button:</p>
+<button onclick="alert('Button 1 funktioniert!')">Button 1 - onclick</button>
+<br><br>
+<a href="javascript:alert('Link funktioniert!')">Link - javascript:</a>
+<br><br>
+<form onsubmit="alert('Formular funktioniert!');return false;">
+  <input type="text" value="Test" name="feld">
+  <input type="submit" value="Formular absenden">
+</form>
+<br>
+<p id="status">Noch nicht geklickt</p>
+<script>
+document.getElementById('status').textContent = 'JavaScript laeuft!';
+</script>
+</body>
+</html>
