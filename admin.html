@@ -143,50 +143,56 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
     </div>
 
-    <div class="login-tabs">
-      <button class="login-tab on" onclick="loginTab(0)" id="lt0">🔐 Anmelden</button>
-      <button class="login-tab" onclick="loginTab(1)" id="lt1">⚙️ Verbindung</button>
+    <!-- Verbindungsstatus -->
+    <div id="config-ok-hint" style="background:#d4edda;border-radius:8px;padding:8px 14px;font-size:12px;color:#155724;margin-bottom:14px;display:none;font-weight:600;">
+      ✅ Supabase verbunden – bereit zum Anmelden
+    </div>
+    <div id="config-missing-hint" style="background:#fff3cd;border-left:3px solid #f5c800;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#856404;margin-bottom:14px;line-height:1.6;">
+      <b>⚠️ Verbindung noch nicht eingerichtet</b><br>
+      Bitte zuerst unten URL und API Key eintragen.
     </div>
 
-    <!-- Panel 0: LOGIN -->
-    <div class="login-panel on" id="lp0">
-      <div class="config-ok" id="config-ok-hint">✅ Supabase verbunden</div>
-      <div class="f-row">
-        <label>E-Mail</label>
-        <input type="email" id="login-email" placeholder="deine@email.de" autocomplete="email">
-      </div>
-      <div class="f-row">
-        <label>Passwort</label>
-        <input type="password" id="login-pw" placeholder="••••••••" autocomplete="current-password"
-          onkeydown="if(event.key==='Enter')anmelden()">
-      </div>
-      <button class="btn-primary" id="login-btn" onclick="anmelden()">Anmelden</button>
-      <div class="error-box" id="login-fehler">
-        E-Mail oder Passwort falsch – oder Supabase-Verbindung fehlt (Tab „Verbindung" prüfen).
-      </div>
+    <!-- Login -->
+    <div class="f-row">
+      <label>E-Mail</label>
+      <input type="email" id="login-email" placeholder="deine@email.de" autocomplete="email">
     </div>
+    <div class="f-row">
+      <label>Passwort</label>
+      <input type="password" id="login-pw" placeholder="••••••••" autocomplete="current-password"
+        onkeydown="if(event.key==='Enter')anmelden()">
+    </div>
+    <button class="btn-primary" id="login-btn" onclick="anmelden()">Anmelden</button>
+    <div class="error-box" id="login-fehler">Anmeldung fehlgeschlagen. Bitte prüfe E-Mail, Passwort und Verbindungseinstellungen.</div>
 
-    <!-- Panel 1: VERBINDUNG -->
-    <div class="login-panel" id="lp1">
-      <div class="hinweis-box">
-        <b>Wo finde ich diese Werte?</b><br>
-        Supabase Dashboard → dein Projekt →<br>
-        <b>API URL:</b> Integrations → Data API → API URL (nur bis .supabase.co)<br>
-        <b>API Key:</b> Settings → API Keys → Publishable key (sb_pu...)
+    <!-- Verbindung aufklappbar -->
+    <div style="margin-top:20px;border-top:2px solid #eef2f7;padding-top:16px;">
+      <div id="verb-toggle" onclick="verbindungToggle()" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0.1);padding:4px 0;">
+        <span style="font-size:14px;font-weight:700;color:#1a4a7a;">⚙️ Supabase-Verbindung einrichten</span>
+        <span id="toggle-icon" style="font-size:22px;font-weight:700;color:#1a4a7a;line-height:1;">+</span>
       </div>
-      <div class="f-row">
-        <label>Supabase URL</label>
-        <input type="text" id="cfg-url" placeholder="https://xxxxxx.supabase.co" oninput="configSpeichern()">
+      <div id="verbindung-panel" style="display:none;margin-top:14px;">
+        <div style="background:#f0f6fc;border-left:3px solid #1a4a7a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;color:#1a4a7a;line-height:1.7;margin-bottom:14px;">
+          <b>Wo findest du die Werte?</b><br>
+          <b>URL:</b> Supabase → dein Projekt → Integrations → Data API<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;→ nur den Teil bis <i>.supabase.co</i> kopieren<br>
+          <b>Key:</b> Supabase → Settings → API Keys → Publishable key (sb_pu...)
+        </div>
+        <div class="f-row">
+          <label>Supabase URL</label>
+          <input type="url" id="cfg-url" placeholder="https://xxxxxx.supabase.co" oninput="configSpeichern()">
+        </div>
+        <div class="f-row">
+          <label>API Key</label>
+          <input type="text" id="cfg-key" placeholder="sb_pu..." oninput="configSpeichern()">
+        </div>
+        <button class="btn-primary" onclick="configSpeichernUndSchliessen()">✅ Speichern</button>
+        <div id="cfg-saved" style="background:#d4edda;border-radius:8px;padding:8px 14px;font-size:13px;color:#155724;margin-top:10px;display:none;font-weight:600;">
+          ✅ Gespeichert! Jetzt oben anmelden.
+        </div>
       </div>
-      <div class="f-row">
-        <label>API Key (Publishable key)</label>
-        <input type="text" id="cfg-key" placeholder="sb_pu..." oninput="configSpeichern()">
-      </div>
-      <div class="success-box" id="cfg-saved">✅ Gespeichert – jetzt Anmelden-Tab öffnen</div>
-      <button class="btn-primary" onclick="configSpeichern();document.getElementById('cfg-saved').style.display='block';setTimeout(function(){loginTab(0);},1200);">
-        Speichern &amp; zum Login
-      </button>
     </div>
+  </div>
   </div>
 </div>
 
@@ -330,17 +336,10 @@ function configLaden() {
   var c = getConfig();
   if(c.url) document.getElementById('cfg-url').value = c.url;
   if(c.key) document.getElementById('cfg-key').value = c.key;
-  if(c.url && c.key) document.getElementById('config-ok-hint').style.display = 'block';
+  updateConfigStatus();
 }
 
 // ===== LOGIN TABS =====
-function loginTab(n) {
-  document.getElementById('lt0').className = n===0 ? 'login-tab on' : 'login-tab';
-  document.getElementById('lt1').className = n===1 ? 'login-tab on' : 'login-tab';
-  document.getElementById('lp0').className = n===0 ? 'login-panel on' : 'login-panel';
-  document.getElementById('lp1').className = n===1 ? 'login-panel on' : 'login-panel';
-}
-
 // ===== SUPABASE =====
 function getBaseUrl() {
   var c = getConfig();
@@ -630,6 +629,7 @@ async function allesLaden(){
 
 // ===== START =====
 configLaden();
+updateConfigStatus();
 var session=getSession();
 if(session&&session.access_token){
   document.getElementById('login-screen').style.display='none';
