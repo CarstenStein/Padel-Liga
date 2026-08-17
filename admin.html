@@ -220,22 +220,36 @@ function ladeUe() {
 function ladeLg() {
   api('ligen?select=id,name,spieler(position,name),spieltage(id)&order=name.asc', null, null, null, function(d) {
     var tb = document.getElementById('tlg');
-    if (!d || !d.length) { tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Noch keine Ligen</td></tr>'; return; }
-    tb.innerHTML = d.map(function(l) {
+    if (!d || !d.length) {
+      tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Noch keine Ligen. Lege die erste an!</td></tr>';
+      return;
+    }
+    tb.innerHTML = '';
+    d.forEach(function(l) {
       var sp = [1,2,3,4].map(function(pos) {
         var x = (l.spieler || []).find(function(s) { return s.position === pos; });
         return (x && x.name) ? x.name : '-';
       }).join(', ');
-      var lid = l.id;
-      var lnm = l.name;
-      return '<tr>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lnm + '</b><br><small style="color:#888;">' + sp + '</small></td>' +
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + l.name + '</b><br><small style="color:#888;">' + sp + '</small></td>' +
         '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + (l.spieltage ? l.spieltage.length : 0) + '</td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' +
-          '<button type="button" onclick="lgEdit('' + lid + '')" style="padding:4px 8px;border:none;background:#eef2f7;border-radius:4px;cursor:pointer;margin-right:4px;font-size:12px;">Bearb.</button>' +
-          '<button type="button" onclick="lgDel('' + lid + '')" style="padding:4px 8px;border:none;background:#fdecea;color:#c0392b;border-radius:4px;cursor:pointer;font-size:12px;">Del</button>' +
-        '</td></tr>';
-    }).join('');
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"></td>';
+      var tdAkt = tr.cells[2];
+      var btnB = document.createElement('button');
+      btnB.type = 'button';
+      btnB.textContent = 'Bearbeiten';
+      btnB.style.cssText = 'padding:4px 8px;border:none;background:#eef2f7;border-radius:4px;cursor:pointer;margin-right:4px;font-size:12px;font-family:Arial;';
+      btnB.onclick = (function(id) { return function() { lgEdit(id); }; })(l.id);
+      var btnD = document.createElement('button');
+      btnD.type = 'button';
+      btnD.textContent = 'Loeschen';
+      btnD.style.cssText = 'padding:4px 8px;border:none;background:#fdecea;color:#c0392b;border-radius:4px;cursor:pointer;font-size:12px;font-family:Arial;';
+      btnD.onclick = (function(id, nm) { return function() { lgDel(id, nm); }; })(l.id, l.name);
+      tdAkt.appendChild(btnB);
+      tdAkt.appendChild(btnD);
+      tb.appendChild(tr);
+    });
   });
 }
 
@@ -305,13 +319,26 @@ function ladeSt() {
   var f = document.getElementById('sf').value;
   api('spieltage?select=id,datum,gespeichert_am,ligen(name)&order=gespeichert_am.desc' + (f ? '&liga_id=eq.' + f : ''), null, null, null, function(d) {
     var tb = document.getElementById('tst');
-    if (!d || !d.length) { tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Keine Spieltage</td></tr>'; return; }
-    tb.innerHTML = d.map(function(s) {
+    if (!d || !d.length) {
+      tb.innerHTML = '<tr><td colspan="3" style="padding:16px;text-align:center;color:#aaa;">Keine Spieltage</td></tr>';
+      return;
+    }
+    tb.innerHTML = '';
+    d.forEach(function(s) {
       var lig = (s.ligen && s.ligen.name) ? s.ligen.name : '-';
-      return '<tr><td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lig + '</b></td>' +
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><b>' + lig + '</b></td>' +
         '<td style="padding:8px;border-bottom:1px solid #f0f0f0;">' + new Date(s.datum).toLocaleDateString('de-DE') + '</td>' +
-        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"><button type="button" onclick="stDel('' + s.id + '')" style="padding:4px 8px;border:none;background:#fdecea;color:#c0392b;border-radius:4px;cursor:pointer;font-size:12px;">Del</button></td></tr>';
-    }).join('');
+        '<td style="padding:8px;border-bottom:1px solid #f0f0f0;"></td>';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = 'Loeschen';
+      btn.style.cssText = 'padding:4px 8px;border:none;background:#fdecea;color:#c0392b;border-radius:4px;cursor:pointer;font-size:12px;font-family:Arial;';
+      btn.onclick = (function(id) { return function() { stDel(id); }; })(s.id);
+      tr.cells[2].appendChild(btn);
+      tb.appendChild(tr);
+    });
   });
 }
 
